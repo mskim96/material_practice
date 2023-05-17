@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="banner"
+            type="jp.co.momogo.model.Banner" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/banner_margin"
+        android:clickable="true"
+        android:focusable="true"
+        app:strokeWidth="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/banner_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:foreground="@drawable/scrim_banner"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{banner.imageUrl}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/banner_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_1"
+                android:layout_marginBottom="@dimen/grid_1"
+                android:text="@{banner.title}"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@id/banner_subtitle"
+                app:layout_constraintStart_toStartOf="@id/banner_image" />
+
+            <TextView
+                android:id="@+id/banner_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grid_1"
+                android:text="@{banner.subTitle}"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/banner_image"
+                app:layout_constraintStart_toStartOf="@id/banner_title"
+                app:layout_constraintWidth_percent="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

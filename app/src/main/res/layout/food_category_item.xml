@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="foodcategory"
+            type="jp.co.momogo.model.FoodCategory" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        app:cardElevation="@dimen/grid_0_5"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/grid_1"
+        app:strokeWidth="0dp"
+        android:stateListAnimator="@animator/click_selector">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/colorSurface"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/category_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/category_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:duplicateParentState="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/category_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_width="100dp" />
+
+            <TextView
+                android:id="@+id/category_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/grid_2"
+                android:text="@{foodcategory.name}"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toEndOf="@id/category_image"
+                app:layout_constraintTop_toTopOf="@id/category_image"
+                app:layout_constraintBottom_toBottomOf="@id/category_image"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="restaurant"
+            type="jp.co.momogo.model.Restaurant" />
+    </data>
+
+    <com.google.android.material.carousel.MaskableFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/grid_0_5"
+        android:layout_marginEnd="@dimen/grid_1"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingHorizontal="0dp"
+        app:shapeAppearance="?attr/shapeAppearanceCornerExtraSmall">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:foreground="@drawable/scrim_item"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{restaurant.mainImageUrl}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_height="240dp" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grid_1"
+                android:padding="@dimen/grid_1"
+                android:text="@{restaurant.name}"
+                android:textAlignment="textEnd"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/image"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Test restaurant title" />
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_category"
+                android:padding="@dimen/grid_1"
+                android:text="@{restaurant.category.displayName}"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceLabelMedium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="test restaurant type" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.carousel.MaskableFrameLayout>
+
+</layout>

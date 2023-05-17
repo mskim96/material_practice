@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/onboarding"
+        android:name="jp.co.momogo.onboarding.OnboardingFragment"
+        android:label="OnboardingFragment"
+        tools:layout="@layout/onboarding_fragment">
+        <action
+            android:id="@+id/action_onboarding_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/home"
+        android:name="jp.co.momogo.home.HomeFragment"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/suggestion"
+        android:name="jp.co.momogo.suggestion.SuggestionFragment"
+        android:label="SuggestionFragment"
+        tools:layout="@layout/suggestion_fragment" />
+    <fragment
+        android:id="@+id/search"
+        android:name="jp.co.momogo.suggestion.SuggestionFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/suggestion_fragment" />
+    <fragment
+        android:id="@+id/detail"
+        android:name="jp.co.momogo.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/detail_fragment" />
+</navigation>

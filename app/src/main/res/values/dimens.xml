@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="grid_0_5">4dp</dimen>
+    <dimen name="grid_1">8dp</dimen>
+    <dimen name="grid_1_5">12dp</dimen>
+    <dimen name="grid_2">16dp</dimen>
+    <dimen name="grid_3">24dp</dimen>
+    <dimen name="grid_4">32dp</dimen>
+
+    <dimen name="banner_margin">@dimen/grid_2</dimen>
+
+    <dimen name="banner_indicator_dot_size">4dp</dimen>
+    <dimen name="banner_indicator_dot_padding">@dimen/grid_0_5</dimen>
+</resources>
