@@ -6,7 +6,7 @@
 
         <variable
             name="food"
-            type="jp.co.momogo.model.Food" />
+            type="jp.co.momogo.model.Menu" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
-            app:imageUrl="@{food.imageUrl}"
+            app:imageUrl="@{food.imageUrl.url}"
             app:layout_constraintDimensionRatio="3:4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

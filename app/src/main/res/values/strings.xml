@@ -1,10 +1,26 @@
 <resources>
     <string name="app_name">material_sample</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-
+    <!--    Home toolbar    -->
     <string name="search">search</string>
-    <string name="cart">cart</string>
+    <string name="search_content_description">search icon</string>
+    <string name="more">more</string>
+    <string name="more_content_description">more icon</string>
+    <string name="chip_fresh">新鮮</string>
+
+    <!--    Home fragment   -->
     <string name="home">Home</string>
-    <string name="suggestion">Suggestion</string>
+    <string name="populate">人気急上昇の店</string>
+    <string name="populate_sub">最近</string>
+    <string name="populate_emoji">🔥</string>
+
+    <!--    Home chip   -->
+    <string name="chip_mellow">まろやか</string>
+    <string name="chip_luxury">贅沢</string>
+    <string name="chip_savory">旨味のある</string>
+    <string name="chip_authentic">本格的</string>
+
+    <!--    Transition name -->
+    <string name="restaurant_transition_name">restaurant_%1$s</string>
+    <string name="restaurant_detail_transition_name">restaurant_detail</string>
 </resources>

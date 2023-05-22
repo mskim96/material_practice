@@ -1,8 +1,11 @@
 package jp.co.momogo.utils
 
+import android.util.DisplayMetrics
 import androidx.annotation.DimenRes
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearSmoothScroller
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.coroutines.*
 
@@ -18,7 +21,6 @@ fun ViewPager2.showBothSideEdges(
 ) {
     offscreenPageLimit = numberOfPage
     val pageMarginPx = resources.getDimensionPixelOffset(pageMarginRes)
-
     setPageTransformer { page, position ->
         /**
          * if item have 16dp margin of horizontal,

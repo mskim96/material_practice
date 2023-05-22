@@ -9,9 +9,9 @@
             name="viewmodel"
             type="jp.co.momogo.home.HomeViewModel" />
 
-        <variable
-            name="adapter"
-            type="jp.co.momogo.home.RestaurantVerticalAdapter" />
+        <!--        <variable-->
+        <!--            name="adapter"-->
+        <!--            type="jp.co.momogo.home.RestaurantVerticalAdapter" />-->
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -25,12 +25,71 @@
             android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:liftOnScroll="true">
+            app:liftOnScroll="true"
+            app:liftOnScrollColor="@color/white">
 
-            <include layout="@layout/toolbar_home"  />
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:menu="@menu/menu_home" />
+
+            <HorizontalScrollView
+                android:id="@+id/chip_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_2"
+                android:scrollbars="none"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:singleLine="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_fresh" />
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_mellow" />
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_luxury" />
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_savory" />
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_authentic" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <!--    Body    -->
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll"
             android:layout_width="match_parent"
@@ -38,21 +97,32 @@
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <!-- Edit text content later -->
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/populate_sub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/grid_2"
                     android:layout_marginTop="@dimen/grid_2"
-                    android:text="渋谷で\nここはどうですか？"
-                    android:textAppearance="?attr/textAppearanceHeadline5"
+                    android:text="@string/populate_sub"
+                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                    app:layout_constraintBottom_toTopOf="@id/populate"
+                    app:layout_constraintStart_toStartOf="@id/populate"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/populate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:text="@string/populate"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="渋谷で\nここはどうですか？" />
+                    app:layout_constraintTop_toBottomOf="@id/populate_sub" />
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/banner"
@@ -63,36 +133,49 @@
                     android:clipToPadding="false"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title" />
+                    app:layout_constraintTop_toBottomOf="@id/populate" />
 
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/indicator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/grid_2"
-                    android:background="@null"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:scrollIndicators="none"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/banner"
-                    app:tabBackground="@drawable/indicator_selector"
-                    app:tabIndicator="@null"
-                    app:tabPaddingEnd="@dimen/grid_1"
-                    app:tabPaddingStart="@dimen/grid_1" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/restaurant_recycler_view"
+                <TextView
+                    android:id="@+id/category_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/grid_2"
-                    android:adapter="@{adapter}"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:layout_marginTop="@dimen/grid_4"
+                    android:text="カテゴリー"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/banner" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/grid_1_5"
+                    app:hasFixedSize="@{true}"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/category_title"
+                    app:spanCount="3" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/restaurants"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:clipToPadding="false"
                     android:orientation="vertical"
+                    android:paddingBottom="@dimen/grid_2"
                     app:homeItems="@{viewmodel.homeUiState}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/indicator" />
+                    app:layout_constraintTop_toBottomOf="@id/category" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

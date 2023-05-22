@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.momogo.databinding.SuggestItemBinding
-import jp.co.momogo.model.Food
+import jp.co.momogo.model.Menu
 
-class SuggestionAdapter : ListAdapter<Food, SuggestionViewHolder>(FoodDiff) {
+class SuggestionAdapter : ListAdapter<Menu, SuggestionViewHolder>(FoodDiff) {
 
     val variableSpanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
 
@@ -36,7 +36,7 @@ class SuggestionAdapter : ListAdapter<Food, SuggestionViewHolder>(FoodDiff) {
 
 class SuggestionViewHolder(private val binding: SuggestItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: Food) {
+    fun bind(item: Menu) {
         binding.apply {
             food = item
             executePendingBindings()
@@ -47,7 +47,7 @@ class SuggestionViewHolder(private val binding: SuggestItemBinding) :
 /**
  * Food diff for [SuggestionAdapter]
  */
-object FoodDiff : DiffUtil.ItemCallback<Food>() {
-    override fun areItemsTheSame(oldItem: Food, newItem: Food) = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: Food, newItem: Food) = oldItem == newItem
+object FoodDiff : DiffUtil.ItemCallback<Menu>() {
+    override fun areItemsTheSame(oldItem: Menu, newItem: Menu) = oldItem.id == newItem.id
+    override fun areContentsTheSame(oldItem: Menu, newItem: Menu) = oldItem == newItem
 }

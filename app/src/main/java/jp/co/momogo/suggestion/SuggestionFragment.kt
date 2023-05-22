@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.momogo.R
 import jp.co.momogo.databinding.SuggestionFragmentBinding
-import jp.co.momogo.model.seaFoods
+import jp.co.momogo.model.seaMenus
 import jp.co.momogo.utils.BaseFragment
 
 @AndroidEntryPoint
@@ -38,6 +38,6 @@ class SuggestionFragment : BaseFragment<SuggestionFragmentBinding>(R.layout.sugg
                 spanSizeLookup = suggestionAdapter.variableSpanSizeLookup
             }
         binding.suggestionGrid.adapter = suggestionAdapter
-        suggestionAdapter.submitList(seaFoods)
+        suggestionAdapter.submitList(seaMenus)
     }
 }

@@ -6,23 +6,27 @@ package jp.co.momogo.model
 data class Restaurant(
     val id: Int,
     val name: String,
+    val description: String,
     val location: String,
     val category: RestaurantType,
-    val mainImageUrl: String,
+    val mainImageUrl: Image,
     val rating: Int,
-    val menus: List<Food> = emptyList(),
+    val menus: List<Menu> = emptyList(),
+) {
+    val imageList: List<Image>
+        get() {
+            val main = listOf(mainImageUrl)
+            val result = menus.map { it.imageUrl }
+            return main + result
+        }
+}
+
+fun Restaurant.toBanner() = Banner(
+    restaurantId = id,
+    title = name,
+    subTitle = description,
+    imageUrl = mainImageUrl
 )
 
-enum class RestaurantType(val displayName: String) {
-    Japanese("和食"),
-    Western("洋食"),
-    Koreans("韓国料理"),
-    Chinese("中華"),
-    Seafood("寿司 · 海鮮"),
-    Ramen("ラーメン"),
-    Fried("揚げ物"),
-    Skewers("串焼き"),
-    Noodle("そば · うどん"),
-    Curry("カレー"),
-    Dessert("パン · デザート")
-}
+@JvmName("restaurantToBanners")
+fun List<Restaurant>.toBanner() = map(Restaurant::toBanner)

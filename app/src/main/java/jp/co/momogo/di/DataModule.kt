@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import jp.co.momogo.data.RestaurantMenuBuilder
+import jp.co.momogo.databuilder.RestaurantMenuBuilder
 import jp.co.momogo.data.RestaurantRepository
 import jp.co.momogo.data.RestaurantRepositoryImpl
 import kotlinx.coroutines.CoroutineDispatcher

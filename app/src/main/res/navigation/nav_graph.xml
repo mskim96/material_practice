@@ -6,31 +6,48 @@
     app:startDestination="@id/home">
 
     <fragment
-        android:id="@+id/onboarding"
-        android:name="jp.co.momogo.onboarding.OnboardingFragment"
-        android:label="OnboardingFragment"
-        tools:layout="@layout/onboarding_fragment">
-        <action
-            android:id="@+id/action_onboarding_to_home"
-            app:destination="@id/home" />
-    </fragment>
-    <fragment
         android:id="@+id/home"
         android:name="jp.co.momogo.home.HomeFragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/detail" />
+        <action
+            android:id="@+id/action_home_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/suggestion"
         android:name="jp.co.momogo.suggestion.SuggestionFragment"
         android:label="SuggestionFragment"
         tools:layout="@layout/suggestion_fragment" />
+
     <fragment
         android:id="@+id/search"
         android:name="jp.co.momogo.suggestion.SuggestionFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/suggestion_fragment" />
+        tools:layout="@layout/suggestion_fragment">
+        <action
+            android:id="@+id/action_search_to_detail"
+            app:destination="@id/detail" />
+        <action
+            android:id="@+id/action_search_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/detail"
         android:name="jp.co.momogo.detail.DetailFragment"
         android:label="DetailFragment"
-        tools:layout="@layout/detail_fragment" />
+        tools:layout="@layout/detail_fragment">
+        <argument
+            android:name="restaurantId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="jp.co.momogo.search.SearchResultFragment"
+        android:label="SearchResultFragment" />
+
 </navigation>

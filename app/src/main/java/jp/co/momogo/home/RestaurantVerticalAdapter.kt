@@ -1,56 +1,63 @@
 package jp.co.momogo.home
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.carousel.CarouselLayoutManager
 import jp.co.momogo.databinding.HomeVerticalBinding
 import jp.co.momogo.model.RestaurantWithSuggestionType
-import jp.co.momogo.model.SuggestionType
+import jp.co.momogo.utils.NestedRecyclerViewStateRecoverAdapter
+import jp.co.momogo.utils.NestedRecyclerViewViewHolder
 
 /**
  * Restaurant parent adapter.
  */
-class RestaurantVerticalAdapter(val context: Context) :
-    ListAdapter<RestaurantWithSuggestionType, VerticalViewHolder>(verticalDiffUtil) {
-
-    private val carouselLayoutManger = CarouselLayoutManager()
-
+class RestaurantVerticalAdapter(
+    private val listener: RestaurantListener
+) : NestedRecyclerViewStateRecoverAdapter<RestaurantWithSuggestionType, VerticalViewHolder>(
+    verticalDiffUtil
+) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VerticalViewHolder {
-
         return VerticalViewHolder(
-            HomeVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            HomeVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            listener
         )
     }
 
     override fun onBindViewHolder(holder: VerticalViewHolder, position: Int) {
-        holder.bind(getItem(position), carouselLayoutManger)
+        holder.bind(getItem(position))
+        super.onBindViewHolder(holder, position)
     }
 }
 
-class VerticalViewHolder(private val binding: HomeVerticalBinding) :
-    RecyclerView.ViewHolder(binding.root) {
-    fun bind(
-        item: RestaurantWithSuggestionType,
-        carousel: CarouselLayoutManager,
-    ) {
+class VerticalViewHolder(
+    private val binding: HomeVerticalBinding,
+    private val listenerEvent: RestaurantListener
+) : RecyclerView.ViewHolder(binding.root), NestedRecyclerViewViewHolder {
+
+    private lateinit var items: RestaurantWithSuggestionType
+
+    init {
+        binding.innerGrid.apply {
+            adapter = RestaurantItemAdapter(listenerEvent)
+        }
+    }
+
+    fun bind(item: RestaurantWithSuggestionType) {
         binding.apply {
+            items = item
             itemWithType = item
-            when (item.type) {
-                SuggestionType.Populate -> {
-                    recyclerView.layoutManager = carousel
-                    recyclerView.adapter = RestaurantHorizontalRankAdapter(item.restaurants)
-                }
-                else -> recyclerView.adapter = RestaurantHorizontalAdapter(item.restaurants)
+            this.listener = listenerEvent
+            innerGrid.apply {
+                (binding.innerGrid.adapter as RestaurantItemAdapter).submitList(item.restaurants)
             }
             executePendingBindings()
         }
     }
+
+    override fun getId() = items.type.displayName
+
+    override fun getLayoutManager() = binding.innerGrid.layoutManager
 }
 
 /**

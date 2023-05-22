@@ -4,8 +4,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:layout_scrollFlags="scroll|enterAlways"
-    app:menu="@menu/toolbar_home">
+    app:layout_scrollFlags="scroll|enterAlways">
 
     <LinearLayout
         android:id="@+id/toolbar_container"
@@ -16,25 +15,6 @@
         android:focusable="true"
         android:foreground="@drawable/click_foreground"
         android:orientation="horizontal"
-        android:stateListAnimator="@animator/click_selector">
-
-        <TextView
-            android:id="@+id/toolbar_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/grid_0_5"
-            android:text="1丁目 - 15 - 21 渋谷"
-            android:textAppearance="?attr/textAppearanceBody1" />
-
-        <ImageView
-            android:id="@+id/toolbar_chevron"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:backgroundTint="@color/immersive_system_ui"
-            android:src="@drawable/ic_down" />
-
-    </LinearLayout>
+        android:stateListAnimator="@animator/click_selector" />
 
 </com.google.android.material.appbar.MaterialToolbar>
