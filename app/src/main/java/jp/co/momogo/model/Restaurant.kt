@@ -12,6 +12,7 @@ data class Restaurant(
     val mainImageUrl: Image,
     val rating: Int,
     val menus: List<Menu> = emptyList(),
+    val review: List<Review>
 ) {
     val imageList: List<Image>
         get() {

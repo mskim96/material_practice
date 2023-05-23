@@ -8,10 +8,6 @@
         <variable
             name="viewmodel"
             type="jp.co.momogo.home.HomeViewModel" />
-
-        <!--        <variable-->
-        <!--            name="adapter"-->
-        <!--            type="jp.co.momogo.home.RestaurantVerticalAdapter" />-->
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -19,75 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".home.HomeFragment">
-
-        <!--    Toolbar area    -->
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:liftOnScroll="true"
-            app:liftOnScrollColor="@color/white">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|enterAlways|snap"
-                app:menu="@menu/menu_home" />
-
-            <HorizontalScrollView
-                android:id="@+id/chip_scroll"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/grid_2"
-                android:scrollbars="none"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chips"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:singleLine="true"
-                    app:singleSelection="true">
-
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.Material3.Chip.Suggestion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/chip_fresh" />
-
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.Material3.Chip.Suggestion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/chip_mellow" />
-
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.Material3.Chip.Suggestion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/chip_luxury" />
-
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.Material3.Chip.Suggestion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/chip_savory" />
-
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.Material3.Chip.Suggestion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/chip_authentic" />
-
-                </com.google.android.material.chip.ChipGroup>
-
-            </HorizontalScrollView>
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <!--    Body    -->
         <androidx.core.widget.NestedScrollView
@@ -180,6 +107,78 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <!--    Toolbar area    -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:liftOnScroll="true"
+            app:liftOnScrollColor="@color/white">
+
+            <com.google.android.material.search.SearchBar
+                android:id="@+id/searchbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#EEE8F4"
+                android:hint="@string/search_hint"
+                app:hideNavigationIcon="true"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:menu="@menu/menu_home" />
+
+            <HorizontalScrollView
+                android:id="@+id/chip_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_2"
+                android:scrollbars="none"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:singleLine="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_fresh" />
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_mellow" />
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_luxury" />
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_savory" />
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_authentic" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

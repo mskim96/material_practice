@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 navController.addOnDestinationChangedListener { _, destination, _ ->
                     when (destination.id) {
-                        R.id.home -> binding.bottomNav.isVisible = true
+                        R.id.home, R.id.search -> binding.bottomNav.isVisible = true
                         else -> binding.bottomNav.isVisible = false
                     }
                 }

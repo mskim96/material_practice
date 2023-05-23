@@ -117,125 +117,111 @@
                     app:layout_constraintStart_toEndOf="@id/like"
                     app:layout_constraintTop_toTopOf="@id/like" />
 
-                <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/name_div"
-                    android:layout_width="match_parent"
+                <Button
+                    android:id="@+id/distance"
+                    style="@style/Widget.Material3.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_4"
-                    app:dividerInsetEnd="@dimen/grid_2"
-                    app:dividerInsetStart="@dimen/grid_2"
-                    app:layout_constraintTop_toBottomOf="@id/category" />
+                    android:layout_marginStart="@dimen/grid_1"
+                    android:clickable="false"
+                    android:padding="@dimen/grid_2"
+                    android:text="2km"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_distance"
+                    app:iconGravity="textTop"
+                    app:iconPadding="@dimen/grid_1_5"
+                    app:iconSize="24dp"
+                    app:iconTint="@color/black"
+                    app:layout_constraintEnd_toStartOf="@id/rating"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/bookmark" />
 
-                <ImageView
-                    android:id="@+id/location_icon"
+                <Button
+                    android:id="@+id/rating"
+                    style="@style/Widget.Material3.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:padding="@dimen/grid_2"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_star"
+                    app:iconGravity="textTop"
+                    app:iconPadding="@dimen/grid_1_5"
+                    app:iconSize="24dp"
+                    app:iconTint="#FBBE46"
+                    app:layout_constraintBottom_toBottomOf="@id/distance"
+                    app:layout_constraintEnd_toStartOf="@id/time"
+                    app:layout_constraintStart_toEndOf="@id/distance"
+                    app:layout_constraintTop_toTopOf="@id/distance" />
+
+                <Button
+                    android:id="@+id/time"
+                    style="@style/Widget.Material3.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:padding="@dimen/grid_2"
+                    android:text="@string/open_close_time"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_time"
+                    app:iconGravity="textTop"
+                    app:iconPadding="@dimen/grid_1_5"
+                    app:iconSize="24dp"
+                    app:iconTint="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/distance"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/rating"
+                    app:layout_constraintTop_toTopOf="@id/distance" />
+
+                <TextView
+                    android:id="@+id/description_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/grid_2"
-                    android:padding="@dimen/grid_1"
-                    android:src="@drawable/ic_location"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/name_div" />
-
-                <TextView
-                    android:id="@+id/location"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:paddingEnd="@dimen/grid_1"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    app:layout_constraintBottom_toBottomOf="@id/location_icon"
-                    app:layout_constraintEnd_toEndOf="@id/bookmark"
-                    app:layout_constraintStart_toEndOf="@id/location_icon"
-                    app:layout_constraintTop_toTopOf="@id/location_icon" />
-
-                <ImageView
-                    android:id="@+id/rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/grid_1"
-                    android:src="@drawable/ic_star"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/location_icon"
-                    app:tint="#FBBE46" />
-
-                <TextView
-                    android:id="@+id/rating_text"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    app:layout_constraintBottom_toBottomOf="@id/rating"
-                    app:layout_constraintEnd_toEndOf="@id/bookmark"
-                    app:layout_constraintStart_toEndOf="@id/rating"
-                    app:layout_constraintTop_toTopOf="@id/rating" />
-
-                <ImageView
-                    android:id="@+id/time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/grid_1"
-                    android:src="@drawable/ic_time"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rating" />
-
-                <TextView
-                    android:id="@+id/time_text"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="10 : 00 - 23 : 00"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    app:layout_constraintBottom_toBottomOf="@id/time"
-                    app:layout_constraintEnd_toEndOf="@id/bookmark"
-                    app:layout_constraintStart_toEndOf="@id/time"
-                    app:layout_constraintTop_toTopOf="@id/time" />
+                    android:text="@string/description_header"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintStart_toStartOf="@id/name"
+                    app:layout_constraintTop_toBottomOf="@id/distance" />
 
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/grid_2"
-                    android:maxLines="3"
                     android:textAppearance="?attr/textAppearanceBody2"
                     app:layout_constraintEnd_toEndOf="@id/bookmark"
                     app:layout_constraintStart_toStartOf="@id/name"
-                    app:layout_constraintTop_toBottomOf="@id/time" />
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/menu_div"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_2"
-                    app:dividerInsetEnd="@dimen/grid_2"
-                    app:dividerInsetStart="@dimen/grid_2"
-                    app:layout_constraintTop_toBottomOf="@id/description" />
+                    app:layout_constraintTop_toBottomOf="@id/description_header" />
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginHorizontal="@dimen/grid_2"
-                    app:layout_constraintTop_toBottomOf="@id/menu_div"
-                    app:tabIndicatorAnimationMode="elastic"
-                    app:tabIndicatorFullWidth="true"
-                    app:tabSelectedTextColor="@color/black">
+                    android:layout_marginTop="@dimen/grid_2"
+                    app:layout_constraintTop_toBottomOf="@id/description"
+                    app:tabIndicatorFullWidth="true">
 
                     <com.google.android.material.tabs.TabItem
+                        android:id="@+id/menu_tab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="メニュー" />
 
                     <com.google.android.material.tabs.TabItem
+                        android:id="@+id/review_tab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="レビュー" />
 
                 </com.google.android.material.tabs.TabLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/menus"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/menu_review_view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@id/tabs" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

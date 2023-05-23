@@ -47,7 +47,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = index,
                 name = name,
-                description = japaneseRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Japanese,
                 mainImageUrl = japaneseRestaurantImageList[index],
@@ -64,7 +64,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = westernRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Western,
                 mainImageUrl = westernRestaurantImageList[index],
@@ -81,7 +81,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = koreanRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Koreans,
                 mainImageUrl = koreanRestaurantImageList[index],
@@ -98,7 +98,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = chineseRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Chinese,
                 mainImageUrl = chineseRestaurantImageList[index],
@@ -115,7 +115,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = seafoodRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Seafood,
                 mainImageUrl = seafoodRestaurantImageList[index],
@@ -132,7 +132,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = ramenRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Ramen,
                 mainImageUrl = ramenRestaurantImageList[index],
@@ -149,7 +149,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = friedRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Fried,
                 mainImageUrl = friedRestaurantImageList[index],
@@ -166,7 +166,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = skewersRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Skewers,
                 mainImageUrl = skewersRestaurantImageList[index],
@@ -183,7 +183,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = noodleRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Noodle,
                 mainImageUrl = noodleRestaurantImageList[index],
@@ -200,7 +200,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = curryRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Curry,
                 mainImageUrl = curryRestaurantImageList[index],
@@ -217,7 +217,7 @@ class RestaurantBuilder @Inject constructor(
             RestaurantResource(
                 id = id,
                 name = name,
-                description = dessertRestaurantDescriptionNameList[index],
+                description = restaurantDescription,
                 location = addressList[index],
                 category = RestaurantType.Dessert,
                 mainImageUrl = dessertRestaurantImageList[index],

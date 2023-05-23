@@ -14,7 +14,7 @@ data class RestaurantResource(
     val category: RestaurantType,
     val mainImageUrl: String,
     val rating: Int,
-    val menus: List<MenuResource>
+    val menus: List<MenuResource>,
 )
 
 fun RestaurantResource.toEntity() = RestaurantEntity(

@@ -47,9 +47,9 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
                 android:paddingVertical="@dimen/grid_1"
                 android:text="@{restaurant.name}"
-                android:maxLines="1"
                 android:textAppearance="?attr/textAppearanceLabelLarge"
                 app:layout_constraintStart_toStartOf="@id/image"
                 app:layout_constraintTop_toBottomOf="@id/image"
@@ -60,12 +60,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_category"
-                android:text="@{restaurant.category.displayName}"
                 android:paddingBottom="@dimen/grid_1"
+                android:text="@{restaurant.category.displayName}"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceLabelMedium"
-                app:layout_constraintTop_toBottomOf="@id/name"
                 app:layout_constraintStart_toStartOf="@id/name"
+                app:layout_constraintTop_toBottomOf="@id/name"
                 tools:text="test restaurant type" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

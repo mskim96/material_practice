@@ -4,9 +4,9 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Relation
-import jp.co.momogo.model.Restaurant
-import jp.co.momogo.model.RestaurantType
-import jp.co.momogo.model.toImage
+import jp.co.momogo.databuilder.staticdata.fakeReviewDescription
+import jp.co.momogo.databuilder.staticdata.fakeTitleList
+import jp.co.momogo.model.*
 
 /**
  * Restaurant entity.
@@ -42,7 +42,19 @@ fun RestaurantWithMenu.toExternal() = Restaurant(
     category = restaurant.category,
     mainImageUrl = restaurant.mainImageUrl.toImage(),
     rating = restaurant.rating,
-    menus = menus.toExternal()
+    menus = menus.toExternal(),
+    review = fakeTitleList.mapIndexed { index, title ->
+        Review(
+            id = index,
+            title = title,
+            description = fakeReviewDescription,
+            author = User(
+                id = index,
+                username = "User $index",
+                profileImage = ""
+            )
+        )
+    }
 )
 
 @JvmName("RestaurantWithMenuToExternal")

@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/search"
-        android:name="jp.co.momogo.suggestion.SuggestionFragment"
+        android:name="jp.co.momogo.search.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/suggestion_fragment">
+        tools:layout="@layout/search_fragment">
         <action
             android:id="@+id/action_search_to_detail"
             app:destination="@id/detail" />
