@@ -15,18 +15,19 @@
         <action
             android:id="@+id/action_home_to_searchResultFragment"
             app:destination="@id/searchResultFragment" />
+        <action
+            android:id="@+id/action_home_to_search"
+            app:destination="@id/search" />
     </fragment>
 
     <fragment
         android:id="@+id/suggestion"
         android:name="jp.co.momogo.suggestion.SuggestionFragment"
-        android:label="SuggestionFragment"
         tools:layout="@layout/suggestion_fragment" />
 
     <fragment
         android:id="@+id/search"
         android:name="jp.co.momogo.search.SearchFragment"
-        android:label="SearchFragment"
         tools:layout="@layout/search_fragment">
         <action
             android:id="@+id/action_search_to_detail"
@@ -34,20 +35,33 @@
         <action
             android:id="@+id/action_search_to_searchResultFragment"
             app:destination="@id/searchResultFragment" />
+        <action
+            android:id="@+id/action_search_to_home"
+            app:destination="@id/home" />
     </fragment>
 
     <fragment
         android:id="@+id/detail"
         android:name="jp.co.momogo.detail.DetailFragment"
-        android:label="DetailFragment"
         tools:layout="@layout/detail_fragment">
         <argument
             android:name="restaurantId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detail_to_reservationFragment"
+            app:destination="@id/reservationFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
         android:name="jp.co.momogo.search.SearchResultFragment"
         android:label="SearchResultFragment" />
+    <fragment
+        android:id="@+id/reservationFragment"
+        android:name="jp.co.momogo.reservation.ReservationFragment"
+        android:label="ReservationFragment" >
+        <action
+            android:id="@+id/action_reservationFragment_to_detail"
+            app:destination="@id/detail" />
+    </fragment>
 
 </navigation>

@@ -7,9 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.momogo.R
 import jp.co.momogo.databinding.DetailFragmentBinding
@@ -47,7 +52,23 @@ class DetailFragment : BaseFragment<DetailFragmentBinding>(R.layout.detail_fragm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
+        setupFab()
         setupRestaurantDetail()
+    }
+
+    private fun setupToolbar() {
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
+        toolbar.setupWithNavController(navController, appBarConfiguration)
+    }
+
+    private fun setupFab() {
+        val reservationButton = binding.reservation
+        reservationButton.setOnClickListener {
+            navigateToReservation()
+        }
     }
 
     private fun setupRestaurantDetail() {
@@ -69,6 +90,18 @@ class DetailFragment : BaseFragment<DetailFragmentBinding>(R.layout.detail_fragm
                 is DetailUiState.Error -> Unit
             }
         }
+    }
+
+    private fun navigateToReservation() {
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+        }
+        reenterTransition = MaterialElevationScale(true).apply {
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+        }
+
+        val direction = DetailFragmentDirections.actionDetailToReservationFragment()
+        findNavController().navigate(direction)
     }
 
     /**

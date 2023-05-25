@@ -240,6 +240,16 @@
 
         </androidx.core.widget.NestedScrollView>
 
+        <Button
+            android:id="@+id/reservation"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="@dimen/grid_2"
+            android:elevation="2dp"
+            android:text="Reservation" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2.*
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.momogo.R
 import jp.co.momogo.databinding.HomeFragmentBinding
@@ -33,6 +34,9 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment), 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enterTransition = MaterialFadeThrough().apply {
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+        }
     }
 
     override fun onCreateView(
@@ -72,6 +76,16 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment), 
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.searchbar)
         toolbar.setupWithNavController(navController, appBarConfiguration)
+
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.search -> {
+                    navigateToSearch()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     /**
@@ -137,6 +151,14 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment), 
         binding.restaurants.apply {
             this.adapter = verticalAdapter
         }
+    }
+
+    /**
+     * Navigate to Search fragment.
+     */
+    private fun navigateToSearch() {
+        val direction = HomeFragmentDirections.actionHomeToSearch()
+        findNavController().navigate(R.id.search)
     }
 
     /**
