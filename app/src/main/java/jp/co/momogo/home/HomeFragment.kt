@@ -15,7 +15,6 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2.*
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.search.SearchBar
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.momogo.R
 import jp.co.momogo.databinding.HomeFragmentBinding
@@ -53,10 +52,6 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment), 
         setupBannersViewPager()
         setupCategories()
         setupRestaurants()
-
-        binding.searchbar.setOnClickListener {
-
-        }
         /**
          * Postpone enter transitions to allow shared element transitions to run.
          */
@@ -75,7 +70,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment), 
     private fun setupToolbar() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-        val toolbar = requireActivity().findViewById<SearchBar>(R.id.searchbar)
+        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.searchbar)
         toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 

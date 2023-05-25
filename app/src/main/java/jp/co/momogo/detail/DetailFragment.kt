@@ -2,21 +2,18 @@ package jp.co.momogo.detail
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.momogo.R
 import jp.co.momogo.databinding.DetailFragmentBinding
 import jp.co.momogo.model.Image
-import jp.co.momogo.model.Menu
-import jp.co.momogo.model.Review
 import jp.co.momogo.utils.BaseFragment
 import jp.co.momogo.utils.lifecycleWithCollectIn
 
@@ -24,7 +21,6 @@ import jp.co.momogo.utils.lifecycleWithCollectIn
 class DetailFragment : BaseFragment<DetailFragmentBinding>(R.layout.detail_fragment) {
 
     private val detailViewModel: DetailViewModel by viewModels()
-    private val menuReviewAdapter by lazy { MenuReviewAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,15 +57,13 @@ class DetailFragment : BaseFragment<DetailFragmentBinding>(R.layout.detail_fragm
                 is DetailUiState.RestaurantDetail -> {
                     bind {
                         thumbnails.setupThumbnailData(it.data.imageList)
-                        menuReviewViewPager.setupMenuReviewWithTab(
-                            tabs,
-                            it.data.menus,
-                            it.data.review
-                        )
                         category.text = it.data.category.displayName
                         rating.text = it.data.rating.toFloat().toString()
                         name.text = it.data.name
+                        location.text = it.data.location
                         description.text = it.data.description
+                        menus.adapter = DetailMenuAdapter().apply { submitList(it.data.menus) }
+                        reviews.adapter = DetailReviewAdapter().apply { submitList(it.data.review) }
                     }
                 }
                 is DetailUiState.Error -> Unit
@@ -84,25 +78,5 @@ class DetailFragment : BaseFragment<DetailFragmentBinding>(R.layout.detail_fragm
         this.adapter = DetailThumbnailAdapter().apply {
             submitList(imageList)
         }
-    }
-
-    /**
-     * setup Viewpager for menu and review.
-     */
-    private fun ViewPager2.setupMenuReviewWithTab(
-        tab: TabLayout,
-        menus: List<Menu>,
-        reviews: List<Review>
-    ) {
-        this.adapter = menuReviewAdapter.apply {
-            addFragment(MenuFragment(menus))
-            addFragment(ReviewFragment(reviews))
-        }
-        TabLayoutMediator(tab, this) { tab, position ->
-            when (position) {
-                0 -> tab.text = "メニュー"
-                else -> tab.text = "レビュー"
-            }
-        }.attach()
     }
 }

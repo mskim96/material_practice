@@ -14,6 +14,8 @@
     <string name="populate">人気急上昇の店</string>
     <string name="populate_sub">最近</string>
     <string name="populate_emoji">🔥</string>
+    <string name="tab_menu">メニュー</string>
+    <string name="tab_review">レビュー</string>
 
     <!--    Home chip   -->
     <string name="chip_mellow">まろやか</string>
@@ -22,13 +24,14 @@
     <string name="chip_authentic">本格的</string>
 
     <!--    Detail Fragment    -->
-    <string name="open_close_time">9 ~ 23</string>
-    <string name="description_header">東京ドームすぐ！</string>
+    <string name="open_close_time">9 : 00 – 23 : 00</string>
+    <string name="description_header">店の紹介</string>1
 
     <!--    Transition name -->
     <string name="restaurant_transition_name">restaurant_%1$s</string>
     <string name="restaurant_detail_transition_name">restaurant_detail</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>
