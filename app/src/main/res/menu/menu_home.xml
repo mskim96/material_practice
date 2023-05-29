@@ -6,6 +6,7 @@
         android:contentDescription="@string/search_content_description"
         android:icon="@drawable/ic_search"
         android:title="@string/search"
+        app:iconTint="?attr/colorOnSurfaceVariant"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/dummy"

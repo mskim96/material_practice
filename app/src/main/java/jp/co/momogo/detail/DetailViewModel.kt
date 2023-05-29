@@ -1,15 +1,11 @@
 package jp.co.momogo.detail
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.momogo.data.RestaurantRepository
-import jp.co.momogo.home.HomeUiState
-import jp.co.momogo.model.Menu
 import jp.co.momogo.model.Restaurant
-import jp.co.momogo.model.Review
 import jp.co.momogo.utils.Result
 import jp.co.momogo.utils.asResult
 import kotlinx.coroutines.flow.*

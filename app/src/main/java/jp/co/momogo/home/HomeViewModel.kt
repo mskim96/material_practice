@@ -1,12 +1,17 @@
 package jp.co.momogo.home
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jp.co.momogo.data.RestaurantQuery
+import jp.co.momogo.data.ArticleRepository
+import jp.co.momogo.data.CuisineRepository
 import jp.co.momogo.data.RestaurantRepository
-import jp.co.momogo.model.*
-import jp.co.momogo.model.SuggestionType.*
+import jp.co.momogo.model.Article
+import jp.co.momogo.model.Cuisine
+import jp.co.momogo.model.CuisineType
+import jp.co.momogo.model.CuisineType.None
+import jp.co.momogo.model.Restaurant
 import jp.co.momogo.utils.Result.*
 import jp.co.momogo.utils.asResult
 import kotlinx.coroutines.flow.*
@@ -14,74 +19,136 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    restaurantRepository: RestaurantRepository
+    cuisineRepository: CuisineRepository,
+    restaurantRepository: RestaurantRepository,
+    articleRepository: ArticleRepository,
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    /**
-     * Get restaurants.
-     */
-    private val preferenceRestaurants = restaurantRepository.getRestaurants()
-    private val populateRestaurants = restaurantRepository.getRestaurants(
-        RestaurantQuery(filterTopRate = 4)
-    )
-    private val getNearDistanceRestaurants = restaurantRepository.getRestaurants()
+    private val _savedFilterType = savedStateHandle.getStateFlow(FOOD_FILTER_KEY, None)
 
-    val banners = restaurantRepository.getBannerRestaurant().map { it.take(6).toBanner() }
-        .stateIn(
+    val cuisineAndRestaurantUiState: StateFlow<CuisineAndRestaurantUiState> =
+        cuisineAndRestaurantUiState(
+            cuisineType = _savedFilterType,
+            cuisineRepository = cuisineRepository,
+            restaurantRepository = restaurantRepository
+        ).stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(0),
-            initialValue = emptyList()
+            started = SharingStarted.WhileSubscribed(5_000L),
+            initialValue = CuisineAndRestaurantUiState.Loading
         )
 
-    /**
-     * Combine restaurants and wrap with suggestion types.
-     */
-    private val restaurantsWithType = combine(
-        preferenceRestaurants,
-        populateRestaurants,
-        getNearDistanceRestaurants
-    ) { _prefer, _popular, _near ->
-        listOf(
-            /**
-             * Take only 10 restaurants.
-             */
-            _prefer.withSuggestionType(type = PreferenceCategory),
-            _popular.withSuggestionType(type = Populate),
-            /*_near.asReversed().withSuggestionType(type = NearDistance)*/
+    val articleUiState: StateFlow<ArticleUiState> =
+        articleUiState(
+            cuisineType = _savedFilterType,
+            articleRepository = articleRepository
+        ).stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000L),
+            initialValue = ArticleUiState.Loading
         )
+
+    fun setFilterCategory(category: CuisineType) {
+        savedStateHandle[FOOD_FILTER_KEY] = category
     }
-        .distinctUntilChanged()
-        .asResult()
 
-    /**
-     * State flow for home restaurant data.
-     */
-    val homeUiState: StateFlow<HomeUiState> = restaurantsWithType.map { state ->
-        when (state) {
-            is Loading -> HomeUiState.Loading
-            is Success -> {
-                HomeUiState.RestaurantsWithType(
-                    data = state.data
-                )
-            }
-            is Error -> HomeUiState.Error(state.exception?.message)
+    private fun cuisineAndRestaurantUiState(
+        cuisineType: Flow<CuisineType>,
+        cuisineRepository: CuisineRepository,
+        restaurantRepository: RestaurantRepository
+    ): Flow<CuisineAndRestaurantUiState> {
+        // Observe cuisines and restaurants.
+        val cuisinesStream = cuisineRepository.getFoodsStream()
+        val restaurantsStream = restaurantRepository.getRestaurantsStream()
+
+        return combine(
+            cuisineType,
+            cuisinesStream,
+            restaurantsStream,
+        ) { type, cuisines, restaurants ->
+            val filteredCuisines = filteredItems(type, cuisines, cuisineFilterPredicate)
+            val filteredRestaurants =
+                filteredItems(type, restaurants, restaurantFilterPredicate)
+            Pair(filteredCuisines, filteredRestaurants)
         }
-    }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = HomeUiState.Loading
-    )
+            .asResult()
+            .map { result ->
+                when (result) {
+                    is Success -> {
+                        val (cuisines, restaurants) = result.data
+                        CuisineAndRestaurantUiState.CuisineAndRestaurant(
+                            cuisines = cuisines,
+                            restaurants = restaurants
+                        )
+                    }
+                    is Loading -> CuisineAndRestaurantUiState.Loading
+                    is Error -> CuisineAndRestaurantUiState.Error(result.exception?.message)
+                }
+            }
+    }
+
+    private fun articleUiState(
+        cuisineType: Flow<CuisineType>,
+        articleRepository: ArticleRepository
+    ): Flow<ArticleUiState> {
+
+        val articlesStream = articleRepository.getArticlesStream()
+        return combine(cuisineType, articlesStream) { type, articles ->
+            filteredItems(type = type, items = articles, articleFilterPredicate)
+        }
+            .asResult()
+            .map { result ->
+                when (result) {
+                    is Success -> ArticleUiState.ArticleData(articles = result.data)
+                    is Loading -> ArticleUiState.Loading
+                    is Error -> ArticleUiState.Error(result.exception?.message)
+                }
+            }
+    }
 }
 
-/**
- * Sealed interface for home ui state.
- */
-sealed interface HomeUiState {
-    object Loading : HomeUiState
+sealed interface CuisineAndRestaurantUiState {
+    object Loading : CuisineAndRestaurantUiState
 
-    data class RestaurantsWithType(
-        val data: List<RestaurantWithSuggestionType>
-    ) : HomeUiState
+    data class CuisineAndRestaurant(
+        val cuisines: List<Cuisine>,
+        val restaurants: List<Restaurant>
+    ) : CuisineAndRestaurantUiState
 
-    data class Error(val exception: String?) : HomeUiState
+    data class Error(val exception: String?) : CuisineAndRestaurantUiState
+}
+
+sealed interface ArticleUiState {
+    object Loading : ArticleUiState
+
+    data class ArticleData(
+        val articles: List<Article>
+    ) : ArticleUiState
+
+    data class Error(val exception: String?) : ArticleUiState
+}
+
+private const val FOOD_FILTER_KEY = "FOOD_FILTER_KEY"
+
+private val cuisineFilterPredicate: (CuisineType, Cuisine) -> Boolean =
+    { type, cuisine -> type == None || type in cuisine.cuisineType }
+
+private val restaurantFilterPredicate: (CuisineType, Restaurant) -> Boolean =
+    { type, restaurant -> type == None || type in restaurant.category }
+
+private val articleFilterPredicate: (CuisineType, Article) -> Boolean =
+    { type, article -> type == None || type in article.cuisineType }
+
+private fun <T> filteredItems(
+    type: CuisineType,
+    items: List<T>,
+    predicate: (CuisineType, T) -> Boolean
+): List<T> {
+    val filteredItem = mutableListOf<T>()
+    for (element: T in items) {
+        if (predicate(type, element)) {
+            filteredItem.add(element)
+        }
+    }
+    return filteredItem
 }

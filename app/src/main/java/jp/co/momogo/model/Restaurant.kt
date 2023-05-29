@@ -1,33 +1,19 @@
 package jp.co.momogo.model
 
+import androidx.annotation.StringRes
+
 /**
- * Restaurant data model.
+ * Restaurant external model.
  */
 data class Restaurant(
     val id: Int,
     val name: String,
-    val description: String,
+    @StringRes val description: Int,
     val location: String,
-    val category: RestaurantType,
-    val mainImageUrl: Image,
-    val rating: Int,
-    val menus: List<Menu> = emptyList(),
+    val distance: Double,
+    val category: List<CuisineType>,
+    val rating: Double,
+    val restaurantImages: List<String>,
+    val menus: Menu,
     val review: List<Review>
-) {
-    val imageList: List<Image>
-        get() {
-            val main = listOf(mainImageUrl)
-            val result = menus.map { it.imageUrl }
-            return main + result
-        }
-}
-
-fun Restaurant.toBanner() = Banner(
-    restaurantId = id,
-    title = name,
-    subTitle = description,
-    imageUrl = mainImageUrl
 )
-
-@JvmName("restaurantToBanners")
-fun List<Restaurant>.toBanner() = map(Restaurant::toBanner)

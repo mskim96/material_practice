@@ -39,15 +39,6 @@
                     app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.Corner.Bottom"
                     app:strokeWidth="0dp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/thumbnails"
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -194,18 +185,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/grid_1"
                     android:layout_marginTop="@dimen/grid_2"
-                    android:text="@string/tab_menu"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     app:layout_constraintTop_toBottomOf="@id/description_div" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/menus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:overScrollMode="never"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/menu_title" />
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/menu_div"
@@ -214,8 +195,7 @@
                     android:layout_marginHorizontal="@dimen/grid_1"
                     android:layout_marginTop="@dimen/grid_1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/menus" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/review_title"
@@ -223,18 +203,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/grid_1"
                     android:layout_marginTop="@dimen/grid_2"
-                    android:text="@string/tab_review"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     app:layout_constraintTop_toBottomOf="@id/menu_div" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/reviews"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/review_title" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

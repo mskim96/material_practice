@@ -1,35 +1,42 @@
 package jp.co.momogo.data
 
+import jp.co.momogo.datasource.RestaurantDataSource
+import jp.co.momogo.di.DefaultDispatcher
 import jp.co.momogo.model.Restaurant
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-
-data class RestaurantQuery(
-    val filterTopRate: Int? = null,
-)
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 interface RestaurantRepository {
 
     /**
      * Get restaurants by user preference food category.
      */
-    fun getRestaurants(
-        query: RestaurantQuery = RestaurantQuery(
-            filterTopRate = null,
-        )
-    ): Flow<List<Restaurant>>
+    fun getRestaurantsStream(): Flow<List<Restaurant>>
 
     /**
-     *  Get restaurants detail.
+     * Get restaurant detail.
      */
     fun getRestaurantDetails(restaurantId: Int): Flow<Restaurant>
+}
 
-    /**
-     * Get restaurant's for banner.
-     */
-    fun getBannerRestaurant(): Flow<List<Restaurant>>
+class RestaurantRepositoryImpl @Inject constructor(
+    private val restaurantNetwork: RestaurantDataSource,
+    @DefaultDispatcher private val dispatcher: CoroutineDispatcher
+) : RestaurantRepository {
+    override fun getRestaurantsStream(): Flow<List<Restaurant>> = flow {
+        val restaurants = withContext(dispatcher) {
+            restaurantNetwork.getRestaurants().asExternal()
+        }
+        emit(restaurants)
+    }
 
-    /**
-     * sync restaurant data.
-     */
-    suspend fun synchronize()
+    override fun getRestaurantDetails(restaurantId: Int): Flow<Restaurant> = flow {
+        val restaurant = withContext(dispatcher) {
+            restaurantNetwork.getRestaurantDetail(restaurantId = restaurantId).asExternal()
+        }
+        emit(restaurant)
+    }
 }

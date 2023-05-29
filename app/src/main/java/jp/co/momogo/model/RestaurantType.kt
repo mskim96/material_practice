@@ -3,36 +3,45 @@ package jp.co.momogo.model
 /**
  * Restaurant Types.
  */
-enum class RestaurantType(val displayName: String) {
+enum class RestaurantType(val displayName: String, val queryName: String) {
 
-    Japanese("和食"),
+    Japanese(
+        displayName = "Japanese Restaurant",
+        queryName = "japan"
+    ),
 
-    Western("洋食"),
+    Western(
+        displayName = "Western Restaurant",
+        queryName = "western"
+    ),
 
-    Koreans("韓国料理"),
+    Korean(
+        displayName = "Korean Restaurant",
+        queryName = "korea"
+    ),
 
-    Chinese("中華"),
+    Chinese(
+        displayName = "Chinese Restaurant",
+        queryName = "china"
+    ),
 
-    Seafood("寿司 · 海鮮"),
+    Dessert(
+        displayName = "Caffe",
+        queryName = "dessert"
+    ),
 
-    Ramen("ラーメン"),
+    Noodle(
+        displayName = "Noodle",
+        queryName = "noodle"
+    ),
 
-    Fried("揚げ物"),
+    Meat(
+        displayName = "Meat",
+        queryName = "meat"
+    ),
 
-    Skewers("串焼き"),
-
-    Noodle("そば · うどん"),
-
-    Curry("カレー"),
-
-    Dessert("パン · デザート"),
-
-    Nothing("Unknown")
-}
-
-fun String?.asRestaurantType() = when (this) {
-    null -> RestaurantType.Nothing
-    else -> RestaurantType.values()
-        .firstOrNull { type -> type.displayName == this }
-        ?: RestaurantType.Nothing
+    SeaFood(
+        displayName = "Seafood",
+        queryName = "meat"
+    ),
 }

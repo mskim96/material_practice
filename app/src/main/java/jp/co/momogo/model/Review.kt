@@ -1,12 +1,14 @@
 package jp.co.momogo.model
 
+import androidx.annotation.StringRes
+
 /**
- * Review class for display [Restaurant].
+ * Review external model.
  */
 data class Review(
     val id: Int,
-    val title: String,
-    val description: String,
-    val image: List<String> = emptyList(),
+    @StringRes val title: Int,
+    @StringRes val body: Int,
+    val rating: Double,
     val author: User
 )

@@ -2,51 +2,36 @@ package jp.co.momogo.di
 
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import jp.co.momogo.databuilder.RestaurantMenuBuilder
-import jp.co.momogo.data.RestaurantRepository
-import jp.co.momogo.data.RestaurantRepositoryImpl
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import javax.inject.Qualifier
-import javax.inject.Singleton
+import jp.co.momogo.data.*
+import jp.co.momogo.datasource.*
+import jp.co.momogo.datasource.store.*
 
 @Module
 @InstallIn(SingletonComponent::class)
 interface RepositoryModule {
 
     @Binds
+    fun bindsArticlesRepository(articleRepository: ArticleRepositoryImpl): ArticleRepository
+
+    @Binds
     fun bindsRestaurantsRepository(restaurantRepository: RestaurantRepositoryImpl): RestaurantRepository
+
+    @Binds
+    fun bindCuisineRepository(foodRepository: CuisineRepositoryImpl): CuisineRepository
 }
 
 @Module
 @InstallIn(SingletonComponent::class)
-object BuilderModule {
+interface DataSourceModule {
 
-    @Provides
-    @Singleton
-    fun providesRestaurantMenuBuilder(): RestaurantMenuBuilder = RestaurantMenuBuilder()
-}
+    @Binds
+    fun bindsArticleDataSource(articleDataSource: ArticleDataSourceImpl): ArticleDataSource
 
-@Module
-@InstallIn(SingletonComponent::class)
-object DispatchersModule {
-    @Provides
-    @Dispatcher(MomogoDispatchers.IO)
-    fun providesIODispatcher(): CoroutineDispatcher = Dispatchers.IO
+    @Binds
+    fun bindsRestaurantDataSource(restaurantDataSource: RestaurantDataSourceImpl): RestaurantDataSource
 
-    @Provides
-    @Dispatcher(MomogoDispatchers.Default)
-    fun providesDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
-}
-
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Dispatcher(val momogoDispatcher: MomogoDispatchers)
-
-enum class MomogoDispatchers {
-    Default,
-    IO,
+    @Binds
+    fun bindsCuisineDataSource(cuisineDataSource: CuisineDataSourceImpl): CuisineDataSource
 }

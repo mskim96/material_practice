@@ -13,7 +13,6 @@ import jp.co.momogo.utils.BaseFragment
 class ReservationFragment :
     BaseFragment<ReservationFragmentBinding>(R.layout.reservation_fragment) {
 
-    // TODO: Draw Reservation fragment's layout.
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {

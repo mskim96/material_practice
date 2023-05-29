@@ -1,55 +1,39 @@
 package jp.co.momogo.utils
 
-import android.util.DisplayMetrics
-import androidx.annotation.DimenRes
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearSmoothScroller
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
-import kotlinx.coroutines.*
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.GradientDrawable
+import android.view.ViewGroup
+import androidx.annotation.DrawableRes
+import androidx.core.content.res.ResourcesCompat
+import androidx.palette.graphics.Palette
 
 /**
- * Show edges of both side items for [ViewPager2]
- *
- * @param numberOfPage retain to either side of the currently visible pages.
- * @param pageMarginRes margin of items.
+ * Extract color from image and make gradient.
  */
-fun ViewPager2.showBothSideEdges(
-    numberOfPage: Int = 1,
-    @DimenRes pageMarginRes: Int,
+fun extractColorForGradients(
+    context: Context,
+    @DrawableRes imageDrawable: Int,
+    viewGroup: ViewGroup
 ) {
-    offscreenPageLimit = numberOfPage
-    val pageMarginPx = resources.getDimensionPixelOffset(pageMarginRes)
-    setPageTransformer { page, position ->
-        /**
-         * if item have 16dp margin of horizontal,
-         * need translationX for least 33dp for show edge.
-         */
-        val offset = position * -((pageMarginPx * 3) / 2)
-        page.translationX = offset
-    }
-}
+    val drawable = ResourcesCompat.getDrawable(context.resources, imageDrawable, null)
+    val bitmap = (drawable as? BitmapDrawable)?.bitmap
 
-/**
- * Run banner behavior
- */
-fun ViewPager2.startBannerRun(lifecycleOwner: LifecycleOwner): Job =
-    lifecycleOwner.lifecycleScope.launch {
-        withContext(Dispatchers.Default) {
-            while (true) {
-                delay(BANNER_RUN_DELAY)
-                val itemCount = this@startBannerRun.adapter?.itemCount ?: break
-                val nextBanner =
-                    // Move first item if current position equal or greater than item count.
-                    (this@startBannerRun.currentItem + 1).let { if (it < itemCount) it else 0 }
+    if (bitmap != null) {
+        Palette.from(bitmap).generate { palette ->
+            val dominantColor = palette?.dominantSwatch?.rgb ?: 0
 
-                // switching dispatcher for ui.
-                withContext(Dispatchers.Main) {
-                    this@startBannerRun.currentItem = nextBanner
-                }
-            }
+            // make gradation
+            val gradientDrawable = GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                // The first color code is extra for ui test.
+                intArrayOf(Color.parseColor("#3E2A20"), dominantColor, Color.TRANSPARENT),
+            )
+            gradientDrawable.gradientType = GradientDrawable.LINEAR_GRADIENT
+
+            // set background with gradation
+            viewGroup.background = gradientDrawable
         }
     }
-
-private const val BANNER_RUN_DELAY = 4000L
+}

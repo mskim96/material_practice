@@ -1,27 +1,22 @@
 <resources>
-    <string name="app_name">material_sample</string>
+    <string name="app_name">Momogo</string>
 
     <!--    Home toolbar    -->
     <string name="search">search</string>
     <string name="search_content_description">search icon</string>
     <string name="more">more</string>
     <string name="more_content_description">more icon</string>
-    <string name="chip_fresh">新鮮</string>
-    <string name="search_hint">店の名前またはご飯で検索</string>
 
     <!--    Home fragment   -->
     <string name="home">Home</string>
-    <string name="populate">人気急上昇の店</string>
-    <string name="populate_sub">最近</string>
-    <string name="populate_emoji">🔥</string>
-    <string name="tab_menu">メニュー</string>
-    <string name="tab_review">レビュー</string>
-
-    <!--    Home chip   -->
-    <string name="chip_mellow">まろやか</string>
-    <string name="chip_luxury">贅沢</string>
-    <string name="chip_savory">旨味のある</string>
-    <string name="chip_authentic">本格的</string>
+    <string name="discover">Discover</string>
+    <string name="article">Article</string>
+    <string name="updated_today">Updated Today</string>
+    <string name="grilled_bbq">Grilled BBQ</string>
+    <string name="home_main_image_description">Home main image</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="restaurant_distance">%1$.1fkm</string>
+    <string name="article_attachment_photo">article attachment photo</string>
 
     <!--    Detail Fragment    -->
     <string name="open_close_time">9 : 00 – 23 : 00</string>
@@ -36,6 +31,53 @@
     <string name="restaurant_transition_name">restaurant_%1$s</string>
     <string name="restaurant_detail_transition_name">restaurant_detail</string>
 
+    <!--    User name   -->
+    <string name="username1">Emma</string>
+    <string name="username2">Liam</string>
+    <string name="username3">Olivia</string>
+    <string name="username4">Noah</string>
+    <string name="username5">Isabella</string>
+    <string name="username6">Jackson</string>
+    <string name="username7">Aiden</string>
+    <string name="username8">Benjamin</string>
+
+    <!-- Review and body  -->
+    <string name="lorem_description">Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt.</string>
+
+    <string name="review_title1">A Culinary Masterpiece!</string>
+    <string name="review_title2">A Gastronomic Delight Worth Every Bite</string>
+    <string name="review_title3">Flavors that Dance on the Palate</string>
+    <string name="review_title4">An Epicurean Journey to Remember</string>
+    <string name="review_title5">Foodie Heaven: Where Taste and Artistry Collide</string>
+
+    <string name="review_body1">The restaurant exceeded my expectations with its impeccable service and mouthwatering dishes. I highly recommend trying their signature dish; it was a flavor explosion in every bite!"</string>
+    <string name="review_body2">"As a passionate foodie, I've tried countless restaurants, and this one stands out among the rest. The attention to detail in their presentation and the use of fresh ingredients truly elevate the dining experience</string>
+    <string name="review_body3">Being a foodie, I am always on the lookout for unique and authentic flavors. This hidden gem of a restaurant delivered beyond my wildest dreams. From the first bite to the last, I was transported on a culinary journey I won\'t soon forget</string>
+    <string name="review_body4">I consider myself a connoisseur of fine dining, and this restaurant did not disappoint. The combination of innovative flavors, exquisite plating, and knowledgeable staff made it an exceptional gastronomic experience. A must-visit for all food enthusiasts</string>
+    <string name="review_body5">As a self-proclaimed flavor fanatic, I am constantly seeking new taste sensations. This restaurant delivered an explosion of flavors that left me wanting more. Each dish was carefully crafted, and the harmonious blend of ingredients was a testament to the chef\'s skill and creativity.</string>
+
+    <!--    Article and body   -->
+    <string name="article_title1">Exploring the Hidden Gems of Asian Street Food</string>
+    <string name="article_title2">The Art of Food Pairing: Elevating Your Dining Experience</string>
+    <string name="article_title3">Farm-to-Table Movement: Embracing Sustainable and Locally Sourced Cuisine</string>
+    <string name="article_title4">Indulging in Dessert Delights: From Decadent Chocolate to Fluffy Pastries</string>
+    <string name="article_title5">Uncovering the Secrets of Traditional Mediterranean Cuisine"</string>
+    <string name="article_title6">The Rise of Plant-Based Cuisine: Exploring Vegan and Vegetarian Delicacies</string>
+    <string name="article_title7">The Artistry of Sushi: A Masterful Blend of Technique and Taste</string>
+    <string name="article_title8">Celebrating Global Flavors: Fusion Cuisine at Its Finest</string>
+    <string name="article_title9">The Art of Slow Cooking: Embracing Simplicity and Depth of Flavor</string>
+    <string name="article_title10">Exploring the Rich Heritage of African Cuisine</string>
+
+    <string name="article_body1">Dive into the vibrant world of Asian street food, from savory noodles to delectable skewers. Discover the bustling food stalls, unique flavors, and culinary traditions that make street food a true gastronomic adventure.</string>
+    <string name="article_body2">Unleash your inner food connoisseur as we delve into the art of food pairing. Learn how to create harmonious flavor combinations, enhance taste profiles, and elevate your dining experience to new heights of culinary pleasure.</string>
+    <string name="article_body3">Explore the farm-to-table movement, a culinary trend that emphasizes using locally sourced, sustainable ingredients. Discover the benefits of supporting local farmers, reducing food miles, and savoring fresh, seasonal flavors with a lower environmental footprint.</string>
+    <string name="article_body4">Indulge your sweet tooth as we embark on a journey through the world of desserts. From rich, velvety chocolates to airy, delicate pastries, explore the diverse range of sweet treats that bring joy and satisfaction to every palate.</string>
+    <string name="article_body5">Take a culinary voyage to the sun-kissed shores of the Mediterranean and uncover the secrets of its traditional cuisine. From the fresh flavors of Greek mezze to the aromatic spices of Moroccan tagines, immerse yourself in a tapestry of Mediterranean culinary delights.</string>
+    <string name="article_body6">Join the plant-based revolution as we explore the world of vegan and vegetarian cuisine. From innovative plant-based burgers to nourishing grain bowls, discover the diverse and delicious options that cater to a growing demand for sustainable and ethical dining.</string>
+    <string name="article_body7">Dive into the world of sushi, where technique and taste come together in perfect harmony. Uncover the intricacies of sushi preparation, from selecting the freshest fish to mastering the art of rice seasoning, and learn to appreciate this iconic Japanese culinary art form.</string>
+    <string name="article_body8">Embark on a flavorful journey as we celebrate the creative fusion of culinary traditions. From Mexican-Asian fusion to Italian-Middle Eastern blends, discover how chefs around the world are pushing boundaries, blending flavors, and creating exciting new taste experiences.</string>
+    <string name="article_body9">Slow cooking is more than just a cooking technique; it\'s a way of life. Delve into the world of braises, stews, and simmered dishes that transform humble ingredients into melt-in-your-mouth masterpieces, as we explore the art of slow cooking and its remarkable depth of flavor.</string>
+    <string name="article_body10">Embark on a culinary exploration of Africa and uncover the rich tapestry of flavors that define its diverse cuisines. From aromatic North African tagines to fiery West African jollof rice, immerse yourself in the vibrant spices, bold flavors, and cultural significance of African culinary traditions.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

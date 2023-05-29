@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="jp.co.momogo.model.CuisineType" />
+    </data>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        style="@style/Widget.Material3.ChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:singleLine="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/japanese"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{CuisineType.Japanese.displayName}"
+            app:shapeAppearance="?attr/shapeAppearanceCornerLarge" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/western"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{CuisineType.Western.displayName}"
+            app:shapeAppearance="?attr/shapeAppearanceCornerLarge" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/korean"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{CuisineType.Korean.displayName}"
+            app:shapeAppearance="?attr/shapeAppearanceCornerLarge" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chinese"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{CuisineType.Chinese.displayName}"
+            app:shapeAppearance="?attr/shapeAppearanceCornerLarge" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/noodle"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{CuisineType.Noodle.displayName}"
+            app:shapeAppearance="?attr/shapeAppearanceCornerLarge" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/meat"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{CuisineType.Meat.displayName}"
+            app:shapeAppearance="?attr/shapeAppearanceCornerLarge" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/seafood"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{CuisineType.SeaFood.displayName}"
+            app:shapeAppearance="?attr/shapeAppearanceCornerLarge" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/dessert"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{CuisineType.Dessert.displayName}"
+            app:shapeAppearance="?attr/shapeAppearanceCornerLarge" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+</layout>
