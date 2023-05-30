@@ -8,20 +8,23 @@
         <variable
             name="article"
             type="jp.co.momogo.model.Article" />
+
+        <variable
+            name="listener"
+            type="jp.co.momogo.home.adapter.ArticleAdapter.ArticleAdapterListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_margin="@dimen/grid_1"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_1"
         android:clickable="true"
         android:focusable="true"
-        android:stateListAnimator="@animator/click_selector">
-
-        <!--        android:onClick="@{(view) -> listener.onEmailClicked(view, email)}"-->
-        <!--        android:onLongClick="@{(view) -> listener.onEmailLongPressed(email)}"-->
-        <!--        android:transitionName="@{@string/email_card_transition_name(email.id)}"-->
+        android:onClick="@{(view) -> listener.onArticleClicked(view, article)}"
+        android:onLongClick="@{() -> listener.onArticleLongPressed(article)}"
+        android:stateListAnimator="@animator/click_selector"
+        android:transitionName="@{@string/article_transition_name(article.id)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -80,6 +83,7 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="@dimen/grid_2"
                 android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
                 android:orientation="horizontal"
                 android:overScrollMode="never"
                 android:paddingStart="12dp"

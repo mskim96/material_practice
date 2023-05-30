@@ -1,4 +1,4 @@
-package jp.co.momogo.home
+package jp.co.momogo.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

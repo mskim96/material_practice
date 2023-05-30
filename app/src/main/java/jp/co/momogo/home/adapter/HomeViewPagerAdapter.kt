@@ -1,4 +1,4 @@
-package jp.co.momogo.home
+package jp.co.momogo.home.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

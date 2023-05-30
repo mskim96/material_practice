@@ -11,6 +11,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.momogo.databinding.ActivityMainBinding
+import jp.co.momogo.utils.hide
+import jp.co.momogo.utils.show
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -40,8 +42,8 @@ class MainActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 navController.addOnDestinationChangedListener { _, destination, _ ->
                     when (destination.id) {
-                        R.id.home, R.id.search, R.id.suggestion -> binding.bottomNav.isVisible = true
-                        else -> binding.bottomNav.isVisible = false
+                        R.id.home, R.id.search, R.id.suggestion -> binding.bottomNav.show()
+                        else -> binding.bottomNav.hide()
                     }
                 }
             }

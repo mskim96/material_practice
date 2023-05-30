@@ -1,5 +1,6 @@
 package jp.co.momogo.home
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,6 +13,7 @@ import jp.co.momogo.model.Cuisine
 import jp.co.momogo.model.CuisineType
 import jp.co.momogo.model.CuisineType.None
 import jp.co.momogo.model.Restaurant
+import jp.co.momogo.ui.FOOD_FILTER_KEY
 import jp.co.momogo.utils.Result.*
 import jp.co.momogo.utils.asResult
 import kotlinx.coroutines.flow.*
@@ -66,6 +68,7 @@ class HomeViewModel @Inject constructor(
             cuisinesStream,
             restaurantsStream,
         ) { type, cuisines, restaurants ->
+            Log.d("TAG", "cuisineAndRestaurantUiState: $type")
             val filteredCuisines = filteredItems(type, cuisines, cuisineFilterPredicate)
             val filteredRestaurants =
                 filteredItems(type, restaurants, restaurantFilterPredicate)
@@ -107,6 +110,9 @@ class HomeViewModel @Inject constructor(
     }
 }
 
+/**
+ * Cuisine and restaurant ui state.
+ */
 sealed interface CuisineAndRestaurantUiState {
     object Loading : CuisineAndRestaurantUiState
 
@@ -118,6 +124,9 @@ sealed interface CuisineAndRestaurantUiState {
     data class Error(val exception: String?) : CuisineAndRestaurantUiState
 }
 
+/**
+ * Article ui state.
+ */
 sealed interface ArticleUiState {
     object Loading : ArticleUiState
 
@@ -128,7 +137,6 @@ sealed interface ArticleUiState {
     data class Error(val exception: String?) : ArticleUiState
 }
 
-private const val FOOD_FILTER_KEY = "FOOD_FILTER_KEY"
 
 private val cuisineFilterPredicate: (CuisineType, Cuisine) -> Boolean =
     { type, cuisine -> type == None || type in cuisine.cuisineType }

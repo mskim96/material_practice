@@ -9,18 +9,20 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.transition.MaterialContainerTransform
-import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.momogo.R
-import jp.co.momogo.databinding.DetailFragmentBinding
+import jp.co.momogo.databinding.DetailRestaurantFragmentBinding
+import jp.co.momogo.home.adapter.CuisineAdapter
 import jp.co.momogo.utils.BaseFragment
 
 @AndroidEntryPoint
-class DetailFragment : BaseFragment<DetailFragmentBinding>(R.layout.detail_fragment) {
+class RestaurantDetailFragment :
+    BaseFragment<DetailRestaurantFragmentBinding>(R.layout.detail_restaurant_fragment) {
 
-    private val detailViewModel: DetailViewModel by viewModels()
+    private val restaurantDetailViewModel: RestaurantDetailViewModel by viewModels()
+    private val restaurantDetailTopImageAdapter by lazy { RestaurantDetailTopImageAdapter() }
+    private val cuisineAdapter by lazy { CuisineAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,12 +37,13 @@ class DetailFragment : BaseFragment<DetailFragmentBinding>(R.layout.detail_fragm
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         bind {
-            viewmodel = detailViewModel
+            viewmodel = restaurantDetailViewModel
+            topimageadapter = restaurantDetailTopImageAdapter
+            menuadapter = cuisineAdapter
         }
         return view
     }
@@ -48,32 +51,12 @@ class DetailFragment : BaseFragment<DetailFragmentBinding>(R.layout.detail_fragm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
-        setupFab()
     }
 
     private fun setupToolbar() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-        val toolbar = requireActivity().findViewById<MaterialToolbar>(R.id.toolbar)
+        val toolbar = binding.toolbar
         toolbar.setupWithNavController(navController, appBarConfiguration)
-    }
-
-    private fun setupFab() {
-        val reservationButton = binding.reservation
-        reservationButton.setOnClickListener {
-            navigateToReservation()
-        }
-    }
-
-    private fun navigateToReservation() {
-        exitTransition = MaterialElevationScale(false).apply {
-            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
-        }
-        reenterTransition = MaterialElevationScale(true).apply {
-            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
-        }
-
-        val direction = DetailFragmentDirections.actionDetailToReservationFragment()
-        findNavController().navigate(direction)
     }
 }

@@ -12,10 +12,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.Chip
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.momogo.R
 import jp.co.momogo.databinding.HomeFragmentBinding
+import jp.co.momogo.home.adapter.HomeViewPagerAdapter
 import jp.co.momogo.model.CuisineType
 import jp.co.momogo.model.asCuisineType
 import jp.co.momogo.utils.BaseFragment
@@ -28,11 +28,6 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // TODO: Marking Modified
-        enterTransition = MaterialFadeThrough().apply {
-            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
-        }
     }
 
     override fun onCreateView(
@@ -86,10 +81,10 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
     private fun setupCategoryFilterChips() {
         binding.chips.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             if (checkedIds.isNotEmpty()) { // validate empty checked chip ids.
-                val checkedChip: Chip? = requireActivity().findViewById(checkedIds[0])
+                val checkedChip: Chip = requireActivity().findViewById(checkedIds[0])
                 // Set filter if food category chip is checked
                 homeViewModel.setFilterCategory(
-                    category = checkedChip?.text.toString().asCuisineType()
+                    category = checkedChip.text.toString().asCuisineType()
                 )
             } else {
                 // Set disable filter if food category chip unchecked.
@@ -105,7 +100,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
         val fragments = listOf(CuisineAndRestaurantFragment(), ArticleFragment())
 
         binding.viewpager.adapter =
-            HomeViewPagerAdapter(childFragmentManager, this@HomeFragment.lifecycle).apply {
+            HomeViewPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle).apply {
                 addFragment(fragments)
             }
 
@@ -119,14 +114,3 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
         binding.viewpager.isUserInputEnabled = false
     }
 }
-
-//    override fun onRestaurantClicked(view: View, restaurantId: Int) {
-//        /**
-//         * Navigate with shared element.
-//         */
-//        val restaurantDetailTransitionName = getString(R.string.restaurant_detail_transition_name)
-//        val extras = FragmentNavigatorExtras(view to restaurantDetailTransitionName)
-//        val direction = HomeFragmentDirections.actionHomeToDetail(restaurantId)
-//        findNavController().navigate(direction, extras)
-//    }
-

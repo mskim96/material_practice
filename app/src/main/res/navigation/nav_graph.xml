@@ -10,58 +10,28 @@
         android:name="jp.co.momogo.home.HomeFragment"
         tools:layout="@layout/home_fragment">
         <action
-            android:id="@+id/action_home_to_detail"
-            app:destination="@id/detail" />
+            android:id="@+id/action_home_to_articleDetailFragment"
+            app:destination="@id/articleDetailFragment" />
         <action
-            android:id="@+id/action_home_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
-        <action
-            android:id="@+id/action_home_to_search"
-            app:destination="@id/search" />
+            android:id="@+id/action_home_to_restaurantDetailFragment"
+            app:destination="@id/restaurantDetailFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/suggestion"
-        android:name="jp.co.momogo.suggestion.SuggestionFragment"
-        tools:layout="@layout/suggestion_fragment" />
-
-    <fragment
-        android:id="@+id/search"
-        android:name="jp.co.momogo.search.SearchFragment"
-        tools:layout="@layout/search_fragment">
-        <action
-            android:id="@+id/action_search_to_detail"
-            app:destination="@id/detail" />
-        <action
-            android:id="@+id/action_search_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
-        <action
-            android:id="@+id/action_search_to_home"
-            app:destination="@id/home" />
+        android:id="@+id/articleDetailFragment"
+        android:name="jp.co.momogo.detail.ArticleDetailFragment"
+        tools:layout="@layout/detail_article_fragment">
+        <argument
+            android:name="articleId"
+            app:argType="integer" />
     </fragment>
 
     <fragment
-        android:id="@+id/detail"
-        android:name="jp.co.momogo.detail.DetailFragment"
-        tools:layout="@layout/detail_fragment">
+        android:id="@+id/restaurantDetailFragment"
+        android:name="jp.co.momogo.detail.RestaurantDetailFragment">
         <argument
             android:name="restaurantId"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_detail_to_reservationFragment"
-            app:destination="@id/reservationFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchResultFragment"
-        android:name="jp.co.momogo.search.SearchResultFragment"
-        android:label="SearchResultFragment" />
-    <fragment
-        android:id="@+id/reservationFragment"
-        android:name="jp.co.momogo.reservation.ReservationFragment"
-        android:label="ReservationFragment" >
-        <action
-            android:id="@+id/action_reservationFragment_to_detail"
-            app:destination="@id/detail" />
     </fragment>
 
 </navigation>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="imageurl"
+            type="String" />
+    </data>
+
+    <com.google.android.material.carousel.MaskableFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/container"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/grid_0_5"
+        android:layout_marginEnd="@dimen/grid_0_5"
+        android:foreground="?attr/selectableItemBackground"
+        app:shapeAppearance="?attr/shapeAppearanceCornerMedium">
+
+        <ImageView
+            android:id="@+id/image"
+            imageUrl="@{imageurl}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+    </com.google.android.material.carousel.MaskableFrameLayout>
+
+</layout>

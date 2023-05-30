@@ -28,8 +28,12 @@
 
 
     <!--    Transition name -->
-    <string name="restaurant_transition_name">restaurant_%1$s</string>
+    <string name="restaurant_transition_name">restaurant_%1$d</string>
     <string name="restaurant_detail_transition_name">restaurant_detail</string>
+    <string name="article_transition_name">article_%1$d</string>
+    <string name="article_detail_transition_name">article_detail</string>
+    <string name="cuisine_transition_name">cuisine_%1$d</string>
+    <string name="cuisine_detail_transition_name">cuisine_detail</string>
 
     <!--    User name   -->
     <string name="username1">Emma</string>
@@ -42,7 +46,7 @@
     <string name="username8">Benjamin</string>
 
     <!-- Review and body  -->
-    <string name="lorem_description">Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt.</string>
+    <string name="lorem_description">Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt.</string>
 
     <string name="review_title1">A Culinary Masterpiece!</string>
     <string name="review_title2">A Gastronomic Delight Worth Every Bite</string>

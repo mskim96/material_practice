@@ -3,7 +3,6 @@ package jp.co.momogo.datasource.store
 import jp.co.momogo.R
 import jp.co.momogo.datasource.model.RestaurantResource
 import jp.co.momogo.model.CuisineType
-import jp.co.momogo.model.RestaurantType
 import javax.inject.Inject
 
 /**

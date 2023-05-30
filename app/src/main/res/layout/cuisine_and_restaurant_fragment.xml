@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -10,18 +11,19 @@
 
         <variable
             name="cuisineadapter"
-            type="jp.co.momogo.home.CuisineAdapter" />
+            type="jp.co.momogo.home.adapter.CuisineAdapter" />
 
         <variable
             name="restaurantadapter"
-            type="jp.co.momogo.home.RestaurantAdapter" />
+            type="jp.co.momogo.home.adapter.RestaurantAdapter" />
     </data>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".home.CuisineAndRestaurantFragment">
@@ -32,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/grid_2"
                 android:layout_marginTop="@dimen/grid_2"
-                android:text="Foods"
+                android:text="Cuisines"
                 android:textAppearance="?attr/textAppearanceHeadline5"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@id/food_more"

@@ -14,7 +14,7 @@
     <!--        android:transitionName="@{@string/restaurant_transition_name(restaurant.id)}"-->
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/grid_1"
         android:clickable="true"
@@ -28,7 +28,7 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{cuisine.imageUrl}"
@@ -39,17 +39,29 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                app:layout_goneMarginTop="@dimen/grid_1"
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/grid_0_5"
+                android:layout_marginTop="@dimen/grid_1"
                 android:layout_marginBottom="@dimen/grid_1"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="@{cuisine.foodName}"
                 android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintBottom_toTopOf="@id/price"
                 app:layout_constraintStart_toStartOf="@id/image"
+                app:layout_constraintTop_toBottomOf="@id/image"
+                app:layout_goneMarginTop="@dimen/grid_1" />
+
+            <TextView
+                android:id="@+id/price"
+                cuisinePrice="@{cuisine.price}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image" />
+                app:layout_constraintStart_toStartOf="@id/name"
+                app:layout_constraintTop_toBottomOf="@id/name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
