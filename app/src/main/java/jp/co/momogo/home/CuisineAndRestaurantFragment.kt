@@ -16,6 +16,9 @@ import jp.co.momogo.home.adapter.RestaurantAdapter
 import jp.co.momogo.model.Restaurant
 import jp.co.momogo.utils.BaseFragment
 
+/**
+ * [CuisineAndRestaurantFragment] is inside of the [HomeFragment] viewpager2.
+ */
 @AndroidEntryPoint
 class CuisineAndRestaurantFragment :
     BaseFragment<CuisineAndRestaurantFragmentBinding>(R.layout.cuisine_and_restaurant_fragment),
@@ -44,18 +47,28 @@ class CuisineAndRestaurantFragment :
         super.onViewCreated(view, savedInstanceState)
     }
 
+    /**
+     * Store position of the restaurant recycler view when fragment destroyed.
+     */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         val restaurantState = binding.restaurants.layoutManager?.onSaveInstanceState()
-        outState.putParcelable("recyclerViewState", restaurantState)
+        outState.putParcelable("restaurantsPositionState", restaurantState)
     }
 
+    /**
+     * Restore position of the restaurant recycler view.
+     */
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        val recyclerViewState = savedInstanceState?.getParcelable<Parcelable>("recyclerViewState")
+        val recyclerViewState =
+            savedInstanceState?.getParcelable<Parcelable>("restaurantsPositionState")
         binding.restaurants.layoutManager?.onRestoreInstanceState(recyclerViewState)
     }
 
+    /**
+     * Navigate to restaurantDetail when item clicked.
+     */
     override fun onRestaurantClicked(view: View, restaurant: Restaurant) {
         val restaurantDetailTransitionName = getString(R.string.restaurant_detail_transition_name)
         val extras = FragmentNavigatorExtras(view to restaurantDetailTransitionName)

@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import jp.co.momogo.databinding.HomeCuisineItemBinding
 import jp.co.momogo.model.Cuisine
 
+/**
+ * [CuisineAdapter] is adapter for cuisines.
+ */
 class CuisineAdapter : ListAdapter<Cuisine, CuisineViewHolder>(cuisineDiff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CuisineViewHolder {

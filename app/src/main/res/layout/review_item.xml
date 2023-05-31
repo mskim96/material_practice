@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="review"
+            type="jp.co.momogo.model.Review" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_1"
+        android:background="?attr/colorSurfaceContainer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/grid_2"
+            android:paddingVertical="@dimen/grid_2">
+
+            <ImageView
+                android:id="@+id/user_image_profile"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginVertical="@dimen/grid_2"
+                android:layout_marginTop="@dimen/grid_1"
+                app:circleCrop="@{true}"
+                app:drawableUrl="@{review.author.profileImage}"
+                app:layout_constraintBottom_toTopOf="@id/body"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/avatar_1" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_2"
+                android:text="@{review.author.username}"
+                android:textAppearance="?attr/textAppearanceBody2"
+                app:layout_constraintBottom_toTopOf="@id/rating"
+                app:layout_constraintStart_toEndOf="@id/user_image_profile"
+                app:layout_constraintTop_toTopOf="@id/user_image_profile"
+                tools:text="Username1" />
+
+            <RatingBar
+                android:id="@+id/rating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                reviewDoubleToFloat="@{review.rating}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_0_5"
+                android:numStars="5"
+                android:progressTint="#FBBE46"
+                app:layout_constraintBottom_toBottomOf="@id/user_image_profile"
+                app:layout_constraintStart_toStartOf="@id/username"
+                app:layout_constraintTop_toBottomOf="@id/username" />
+
+            <TextView
+                android:text="@{String.valueOf(review.rating)}"
+                android:id="@+id/rating_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_1"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                app:layout_constraintBottom_toBottomOf="@id/rating"
+                app:layout_constraintStart_toEndOf="@id/rating"
+                app:layout_constraintTop_toTopOf="@id/rating"
+                tools:text="3.3" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yesterday"
+                app:layout_constraintBottom_toBottomOf="@id/username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/username" />
+
+            <TextView
+                android:id="@+id/body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:lineHeight="28sp"
+                android:text="@{review.body}"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintBottom_toBottomOf="@id/like"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_image_profile"
+                tools:text="@string/article_body2" />
+
+            <Button
+                android:id="@+id/like"
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_3"
+                android:gravity="center"
+                android:stateListAnimator="@animator/click_selector"
+                android:text="32"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="?attr/colorOnSurface"
+                app:icon="@drawable/like_selector"
+                app:iconGravity="textTop"
+                app:iconSize="18dp"
+                app:iconTint="?attr/colorOnSurface"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/shared"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/body" />
+
+            <Button
+                android:id="@+id/shared"
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="shared"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="?attr/colorOnSurface"
+                app:icon="@drawable/ic_timeline"
+                app:iconGravity="textTop"
+                app:iconSize="18dp"
+                app:iconTint="?attr/colorOnSurface"
+                app:layout_constraintBottom_toBottomOf="@id/like"
+                app:layout_constraintEnd_toStartOf="@id/more"
+                app:layout_constraintStart_toEndOf="@id/like"
+                app:layout_constraintTop_toTopOf="@id/like" />
+
+            <Button
+                android:id="@+id/more"
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="more"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="?attr/colorOnSurface"
+                app:icon="@drawable/ic_more"
+                app:iconGravity="textTop"
+                app:iconSize="18dp"
+                app:iconTint="?attr/colorOnSurface"
+                app:layout_constraintBottom_toBottomOf="@id/like"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/shared"
+                app:layout_constraintTop_toTopOf="@id/like" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

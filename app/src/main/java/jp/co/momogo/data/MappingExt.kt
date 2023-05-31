@@ -55,7 +55,6 @@ fun MenuResource.asExternal() = Menu(
  */
 fun ReviewResource.asExternal() = Review(
     id = id,
-    title = title,
     body = body,
     rating = rating,
     author = author.asExternal()

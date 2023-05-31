@@ -7,7 +7,7 @@
 
         <variable
             name="adapter"
-            type="jp.co.momogo.detail.ArticleDetailAttachmentAdapter" />
+            type="jp.co.momogo.detail.adapter.ArticleDetailAttachmentAdapter" />
 
         <variable
             name="viewmodel"

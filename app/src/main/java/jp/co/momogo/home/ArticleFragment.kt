@@ -15,6 +15,9 @@ import jp.co.momogo.home.adapter.ArticleAdapter
 import jp.co.momogo.model.Article
 import jp.co.momogo.utils.BaseFragment
 
+/**
+ * [ArticleFragment] is inside of the [HomeFragment] viewpager2.
+ */
 @AndroidEntryPoint
 class ArticleFragment : BaseFragment<ArticleFragmentBinding>(R.layout.article_fragment),
     ArticleAdapter.ArticleAdapterListener {
@@ -33,6 +36,9 @@ class ArticleFragment : BaseFragment<ArticleFragmentBinding>(R.layout.article_fr
         return view
     }
 
+    /**
+     * Navigate articleDetail when item clicked.
+     */
     override fun onArticleClicked(view: View, article: Article) {
         val articleDetailTransitionName = getString(R.string.article_detail_transition_name)
         val extras = FragmentNavigatorExtras(view to articleDetailTransitionName)
@@ -41,6 +47,9 @@ class ArticleFragment : BaseFragment<ArticleFragmentBinding>(R.layout.article_fr
         findNavController().navigate(direction, extras)
     }
 
+    /**
+     * TODO: Article Long pressed event.
+     */
     override fun onArticleLongPressed(article: Article): Boolean {
         // show bottom dialog if article long pressed.
         return true

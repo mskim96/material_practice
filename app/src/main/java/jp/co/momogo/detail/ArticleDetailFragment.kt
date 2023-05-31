@@ -11,6 +11,7 @@ import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.momogo.R
 import jp.co.momogo.databinding.DetailArticleFragmentBinding
+import jp.co.momogo.detail.adapter.ArticleDetailAttachmentAdapter
 import jp.co.momogo.utils.BaseFragment
 
 @AndroidEntryPoint

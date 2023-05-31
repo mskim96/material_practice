@@ -8,7 +8,6 @@ import jp.co.momogo.model.User
  */
 data class ReviewResource(
     val id: Int,
-    @StringRes val title: Int,
     @StringRes val body: Int,
     val rating: Double,
     val author: UserResource

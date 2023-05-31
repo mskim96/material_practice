@@ -9,11 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import jp.co.momogo.databinding.HomeRestaurantItemBinding
 import jp.co.momogo.model.Restaurant
 
+/**
+ * [RestaurantAdapter] is List adapter for restaurant items.
+ */
 class RestaurantAdapter(private val listener: RestaurantAdapterListener) :
     ListAdapter<Restaurant, RestaurantViewHolder>(restaurantDiff) {
 
+    /**
+     * Listener for restaurant item click event.
+     */
     interface RestaurantAdapterListener {
-
         fun onRestaurantClicked(view: View, restaurant: Restaurant)
     }
 

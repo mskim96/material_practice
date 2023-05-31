@@ -1,6 +1,7 @@
 package jp.co.momogo.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -81,10 +82,10 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
     private fun setupCategoryFilterChips() {
         binding.chips.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             if (checkedIds.isNotEmpty()) { // validate empty checked chip ids.
-                val checkedChip: Chip = requireActivity().findViewById(checkedIds[0])
-                // Set filter if food category chip is checked
-                homeViewModel.setFilterCategory(
-                    category = checkedChip.text.toString().asCuisineType()
+                val checkedChipText = requireActivity().findViewById<Chip?>(checkedIds[0]).text
+                // Validate chip text and set filter if food category chip is checked.
+                if (checkedChipText.isNotBlank()) homeViewModel.setFilterCategory(
+                    category = checkedChipText.toString().asCuisineType()
                 )
             } else {
                 // Set disable filter if food category chip unchecked.

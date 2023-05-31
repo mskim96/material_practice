@@ -9,9 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import jp.co.momogo.databinding.HomeArticleItemBinding
 import jp.co.momogo.model.Article
 
+/**
+ * List Adapter for Article items.
+ */
 class ArticleAdapter(private val listener: ArticleAdapterListener) :
     ListAdapter<Article, ArticleViewHolder>(articleDiff) {
 
+    /**
+     * Article click event listener.
+     */
     interface ArticleAdapterListener {
         fun onArticleClicked(view: View, article: Article)
         fun onArticleLongPressed(article: Article): Boolean
@@ -44,6 +50,9 @@ class ArticleViewHolder(private val binding: HomeArticleItemBinding) :
     }
 }
 
+/**
+ * Article diff callback.
+ */
 private val articleDiff = object : DiffUtil.ItemCallback<Article>() {
     override fun areItemsTheSame(oldItem: Article, newItem: Article) =
         oldItem.id == newItem.id

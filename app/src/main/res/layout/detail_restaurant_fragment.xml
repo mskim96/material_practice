@@ -11,7 +11,7 @@
 
         <variable
             name="topimageadapter"
-            type="jp.co.momogo.detail.RestaurantDetailTopImageAdapter" />
+            type="jp.co.momogo.detail.adapter.RestaurantDetailTopImageAdapter" />
 
         <variable
             name="menuadapter"
@@ -236,6 +236,16 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/review_sheet"
+            android:name="jp.co.momogo.detail.ReviewFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="8dp"
+            android:overScrollMode="never"
+            app:behavior_peekHeight="0dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

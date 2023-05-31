@@ -1,6 +1,5 @@
 package jp.co.momogo.home
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,6 +18,9 @@ import jp.co.momogo.utils.asResult
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
+/**
+ * [HomeViewModel]
+ */
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     cuisineRepository: CuisineRepository,
@@ -68,7 +70,6 @@ class HomeViewModel @Inject constructor(
             cuisinesStream,
             restaurantsStream,
         ) { type, cuisines, restaurants ->
-            Log.d("TAG", "cuisineAndRestaurantUiState: $type")
             val filteredCuisines = filteredItems(type, cuisines, cuisineFilterPredicate)
             val filteredRestaurants =
                 filteredItems(type, restaurants, restaurantFilterPredicate)
@@ -137,7 +138,9 @@ sealed interface ArticleUiState {
     data class Error(val exception: String?) : ArticleUiState
 }
 
-
+/**
+ * Predicated for filter
+ */
 private val cuisineFilterPredicate: (CuisineType, Cuisine) -> Boolean =
     { type, cuisine -> type == None || type in cuisine.cuisineType }
 
@@ -147,6 +150,10 @@ private val restaurantFilterPredicate: (CuisineType, Restaurant) -> Boolean =
 private val articleFilterPredicate: (CuisineType, Article) -> Boolean =
     { type, article -> type == None || type in article.cuisineType }
 
+
+/**
+ * Generic for filter items.
+ */
 private fun <T> filteredItems(
     type: CuisineType,
     items: List<T>,

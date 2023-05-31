@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 /**
- * Viewpager Adapter for TabLayout inside HomeFragment.
+ * Viewpager Adapter for TabLayout inside the HomeFragment.
  */
 class HomeViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {

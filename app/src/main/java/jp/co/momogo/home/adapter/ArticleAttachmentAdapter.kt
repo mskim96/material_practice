@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.momogo.databinding.HomeArticleAttachmentItemBinding
 
+/**
+ * [ArticleAttachmentAdapter] is adapter for attachment inside of the article.
+ */
 class ArticleAttachmentAdapter : ListAdapter<String, ArticleAttachmentViewHolder>(attachmentDiff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleAttachmentViewHolder {
@@ -31,6 +34,9 @@ class ArticleAttachmentViewHolder(private val binding: HomeArticleAttachmentItem
     }
 }
 
+/**
+ * Attachment diff callback.
+ */
 private val attachmentDiff = object : DiffUtil.ItemCallback<String>() {
     override fun areItemsTheSame(oldItem: String, newItem: String) =
         oldItem == newItem

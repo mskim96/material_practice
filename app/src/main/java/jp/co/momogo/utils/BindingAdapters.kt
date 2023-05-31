@@ -3,24 +3,25 @@ package jp.co.momogo.utils
 import android.graphics.drawable.Drawable
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import jp.co.momogo.detail.ArticleDetailAttachmentAdapter
 import jp.co.momogo.detail.ArticleDetailUiState
-import jp.co.momogo.detail.RestaurantDetailTopImageAdapter
 import jp.co.momogo.detail.RestaurantDetailUiState
+import jp.co.momogo.detail.adapter.ArticleDetailAttachmentAdapter
+import jp.co.momogo.detail.adapter.RestaurantDetailTopImageAdapter
+import jp.co.momogo.detail.adapter.ReviewAdapter
 import jp.co.momogo.home.*
 import jp.co.momogo.home.adapter.ArticleAdapter
 import jp.co.momogo.home.adapter.CuisineAdapter
 import jp.co.momogo.home.adapter.RestaurantAdapter
 import java.text.NumberFormat
-import java.util.Locale
+import java.util.*
 
 @BindingAdapter("imageUrl", "circleCrop", "placeholder", requireAll = false)
 fun ImageView.bindImageUrl(
@@ -191,5 +192,19 @@ fun RecyclerView.bindRestaurantMenus(uiState: RestaurantDetailUiState) {
     val adapter = this.adapter
     if (adapter is CuisineAdapter && uiState is RestaurantDetailUiState.RestaurantDetail) {
         adapter.submitList(uiState.data.menus.menuList)
+    }
+}
+
+@BindingAdapter("reviewDoubleToFloat")
+fun RatingBar.bindReviewRating(amount: Double) {
+    val convert = amount.toFloat()
+    this.rating = convert
+}
+
+@BindingAdapter("reviewItems")
+fun RecyclerView.bindReviewItems(uiState: RestaurantDetailUiState) {
+    val adapter = this.adapter
+    if (adapter is ReviewAdapter && uiState is RestaurantDetailUiState.RestaurantDetail) {
+        adapter.submitList(uiState.data.review)
     }
 }

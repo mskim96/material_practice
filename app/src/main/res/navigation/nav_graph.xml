@@ -28,7 +28,19 @@
 
     <fragment
         android:id="@+id/restaurantDetailFragment"
-        android:name="jp.co.momogo.detail.RestaurantDetailFragment">
+        android:name="jp.co.momogo.detail.RestaurantDetailFragment"
+        tools:layout="@layout/detail_restaurant_fragment">
+        <argument
+            android:name="restaurantId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_reviewFragment"
+            app:destination="@id/reviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="jp.co.momogo.detail.ReviewFragment"
+        tools:layout="@layout/review_fragment">
         <argument
             android:name="restaurantId"
             app:argType="integer" />

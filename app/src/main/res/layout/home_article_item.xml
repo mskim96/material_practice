@@ -29,8 +29,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/grid_2"
-            android:paddingBottom="@dimen/grid_2">
+            android:paddingVertical="@dimen/grid_2">
 
             <TextView
                 android:id="@+id/username"
@@ -97,9 +96,8 @@
                 android:id="@+id/sender_profile_image_view"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="@dimen/grid_2"
+                android:layout_marginVertical="@dimen/grid_2"
                 android:layout_marginTop="@dimen/grid_1"
-                android:layout_marginEnd="@dimen/grid_2"
                 app:circleCrop="@{true}"
                 app:drawableUrl="@{article.author.profileImage}"
                 app:layout_constraintEnd_toEndOf="parent"

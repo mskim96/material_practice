@@ -11,7 +11,6 @@ class ReviewResourceStore @Inject constructor(userResourceStore: UserResourceSto
     val reviews = listOf(
         ReviewResource(
             id = 0,
-            title = R.string.review_title1,
             body = R.string.review_body1,
             rating = 4.5,
             author = userResourceStore.users[0]
@@ -19,7 +18,6 @@ class ReviewResourceStore @Inject constructor(userResourceStore: UserResourceSto
 
         ReviewResource(
             id = 1,
-            title = R.string.review_title2,
             body = R.string.review_body2,
             rating = 4.5,
             author = userResourceStore.users[1]
@@ -27,7 +25,6 @@ class ReviewResourceStore @Inject constructor(userResourceStore: UserResourceSto
 
         ReviewResource(
             id = 2,
-            title = R.string.review_title3,
             body = R.string.review_body3,
             rating = 5.0,
             author = userResourceStore.users[2]
@@ -35,7 +32,6 @@ class ReviewResourceStore @Inject constructor(userResourceStore: UserResourceSto
 
         ReviewResource(
             id = 3,
-            title = R.string.review_title4,
             body = R.string.review_body4,
             rating = 4.1,
             author = userResourceStore.users[3]
@@ -43,7 +39,6 @@ class ReviewResourceStore @Inject constructor(userResourceStore: UserResourceSto
 
         ReviewResource(
             id = 4,
-            title = R.string.review_title5,
             body = R.string.review_body5,
             rating = 3.7,
             author = userResourceStore.users[4]

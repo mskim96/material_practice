@@ -7,7 +7,6 @@ import androidx.annotation.StringRes
  */
 data class Review(
     val id: Int,
-    @StringRes val title: Int,
     @StringRes val body: Int,
     val rating: Double,
     val author: User

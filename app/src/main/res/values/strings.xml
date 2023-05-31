@@ -19,13 +19,7 @@
     <string name="article_attachment_photo">article attachment photo</string>
 
     <!--    Detail Fragment    -->
-    <string name="open_close_time">9 : 00 – 23 : 00</string>
-    <string name="description_header">店の紹介</string>
-
-    <!--    Search Fragment    -->
-    <string name="search_suggestion_today">ここはどうですか?</string>
-    <string name="search_suggestion_recent">検索履歴</string>
-
+    <string name="open_close_time"></string>
 
     <!--    Transition name -->
     <string name="restaurant_transition_name">restaurant_%1$d</string>
