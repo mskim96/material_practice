@@ -21,6 +21,9 @@
     <!--    Detail Fragment    -->
     <string name="open_close_time"></string>
 
+    <string name="review_empty">There are no reviews yet.</string>
+
+
     <!--    Transition name -->
     <string name="restaurant_transition_name">restaurant_%1$d</string>
     <string name="restaurant_detail_transition_name">restaurant_detail</string>

@@ -7,6 +7,17 @@ import kotlin.math.roundToInt
 
 /**
  * Linearly interpolate between two values
+ *
+ * ```
+ * // lerp example.
+ * @param startValue = 10
+ * @param endValue = 20
+ * @param fraction = 0.5
+ *
+ * 선형 보간법을 이용한 두 값의 가중치 구하기.
+ * example) 10 과 20 의 0.5 를 구하는 공식 사용
+ * 10 + 0.5 * (20 - 10)
+ * ```
  */
 private fun lerp(
     startValue: Float,

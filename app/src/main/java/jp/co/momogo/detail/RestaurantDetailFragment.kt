@@ -62,6 +62,9 @@ class RestaurantDetailFragment :
         setupToolbar()
     }
 
+    /**
+     * Setup toolbar with navigation controller.
+     */
     private fun setupToolbar() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -69,18 +72,20 @@ class RestaurantDetailFragment :
         toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
+    /**
+     * Expand bottom sheet fragment.
+     */
     private fun navigateToReview() {
         val behavior = BottomSheetBehavior.from(binding.reviewSheet)
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
-
-//        val direction =
-//            RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToReviewFragment(args.restaurantId)
-//        findNavController().navigate(direction)
     }
 
-    fun setupReviewSheet() {
+    /**
+     * [ReviewFragment] Setup Bottom sheet with behavior.
+     */
+    private fun setupReviewSheet() {
         val behavior = BottomSheetBehavior.from(binding.reviewSheet)
-        val backCallback =
+        val backCallback = // collapse bottom sheet if it is expand.
             requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) {
                 behavior.state = BottomSheetBehavior.STATE_COLLAPSED
             }
@@ -91,10 +96,8 @@ class RestaurantDetailFragment :
                 backCallback.isEnabled = newState == BottomSheetBehavior.STATE_EXPANDED
             }
 
-            // 나중에 background alpha 조정할 것임. use lerp function(linear interpolation).
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-
-            }
+            // TODO: Use this method if required animation (slideOffset with lerp).
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
         })
     }
 }

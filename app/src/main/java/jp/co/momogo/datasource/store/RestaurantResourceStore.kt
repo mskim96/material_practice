@@ -60,7 +60,7 @@ class RestaurantResourceStore @Inject constructor(
             location = "3-10 Udagawacho, Shibuya-ku, Tokyo, Shibuya Football Tower B1F",
             distance = 1.1,
             category = listOf(CuisineType.Japanese, CuisineType.Noodle),
-            rating = 5.0,
+            rating = 4.2,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1504416285472-eccf03dd31eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGphcGFuJTIwcmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1614640522775-71bebddd21f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGphcGFuJTIwcmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
@@ -87,7 +87,7 @@ class RestaurantResourceStore @Inject constructor(
                 CuisineType.Noodle,
                 CuisineType.SeaFood
             ),
-            rating = 5.0,
+            rating = 3.6,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1501560379-05951a742668?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fGphcGFuJTIwcmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1603497953639-2e798e2f9177?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGphcGFuJTIwcmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
@@ -108,7 +108,7 @@ class RestaurantResourceStore @Inject constructor(
             location = "4-26-11 Sendagaya, Shibuya-ku, Tokyo, Yoyogi TH&C Building 2F",
             distance = 5.1,
             category = listOf(CuisineType.Western, CuisineType.Meat, CuisineType.SeaFood),
-            rating = 5.0,
+            rating = 4.8,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
@@ -129,7 +129,7 @@ class RestaurantResourceStore @Inject constructor(
             location = "3-15-13 Minami-Aoyama, Minato-ku, Tokyo, Aoyama Green Hills 1F",
             distance = 3.2,
             category = listOf(CuisineType.Western, CuisineType.Meat, CuisineType.SeaFood),
-            rating = 5.0,
+            rating = 4.2,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHJlc3RhdXJhbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHJlc3RhdXJhbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60",
@@ -147,7 +147,7 @@ class RestaurantResourceStore @Inject constructor(
             location = "3-2 Kagurazaka, Shinjuku-ku, Tokyo, Kagurazaka Echigoya Building 4F",
             distance = 3.7,
             category = listOf(CuisineType.Western, CuisineType.Meat),
-            rating = 5.0,
+            rating = 4.2,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHJlc3RhdXJhbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJlc3RhdXJhbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60",
@@ -167,7 +167,7 @@ class RestaurantResourceStore @Inject constructor(
             description = R.string.lorem_description,
             location = "4-2-11 Tsukiji, Chuo-ku, Tokyo, Shimbashi Enbujo Annex 1F",
             category = listOf(CuisineType.Korean, CuisineType.Meat, CuisineType.Noodle),
-            rating = 5.0,
+            rating = 3.5,
             distance = 5.5,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1661177866127-6b0c0d9e42e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGtvcmVhJTIwcmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
@@ -186,7 +186,7 @@ class RestaurantResourceStore @Inject constructor(
             location = "3-2-11 Minami-Shinohara-cho, Edogawa-ku, Tokyo",
             distance = 1.1,
             category = listOf(CuisineType.Korean, CuisineType.Noodle, CuisineType.Meat),
-            rating = 5.0,
+            rating = 4.3,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1549221428-495f00892696?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGtvcmVhJTIwcmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1671975412006-f0c68d9c7006?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGtvcmVhJTIwcmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
@@ -212,7 +212,7 @@ class RestaurantResourceStore @Inject constructor(
                 CuisineType.SeaFood,
                 CuisineType.Meat
             ),
-            rating = 5.0,
+            rating = 3.2,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1562583277-1cadb00e98ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpbmElMjByZXN0YXVyYW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1507211222203-4d522e372607?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2hpbmElMjByZXN0YXVyYW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=700&q=60",
@@ -251,7 +251,7 @@ class RestaurantResourceStore @Inject constructor(
             location = "Ebisu Garden Place, 1-8-1 Ebisu Nishi, Shibuya-ku, Tokyo",
             distance = 2.7,
             category = listOf(CuisineType.Dessert),
-            rating = 5.0,
+            rating = 3.6,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1545418314-7ce0b9b53901?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2FmZmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1604184811623-129a299b1322?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2FmZmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60",
@@ -274,7 +274,7 @@ class RestaurantResourceStore @Inject constructor(
             location = "B2F Lumine Est Shinjuku, 6-5-1 Nishi-Shinjuku, Shinjuku-ku, Tokyo",
             distance = 1.3,
             category = listOf(CuisineType.Dessert),
-            rating = 5.0,
+            rating = 4.2,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1572205821737-01dfdaf0b012?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNhZmZlfGVufDB8fDB8fHww&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1559673048-35a51341f8d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGNhZmZlfGVufDB8fDB8fHww&auto=format&fit=crop&w=700&q=60",
@@ -292,7 +292,7 @@ class RestaurantResourceStore @Inject constructor(
             location = "8F Shibuya Hikarie, 1-18-21 Jinnan, Shibuya-ku, Tokyo",
             distance = 0.3,
             category = listOf(CuisineType.Dessert),
-            rating = 5.0,
+            rating = 4.1,
             restaurantImages = listOf(
                 "https://images.unsplash.com/photo-1559673049-3f337dbfd97a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGNhZmZlfGVufDB8fDB8fHww&auto=format&fit=crop&w=700&q=60",
                 "https://images.unsplash.com/photo-1545341124-2cd4e3f548cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fGNhZmZlfGVufDB8fDB8fHww&auto=format&fit=crop&w=700&q=60",

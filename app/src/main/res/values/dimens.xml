@@ -16,7 +16,6 @@
 
 
     <dimen name="banner_margin">@dimen/grid_2</dimen>
-
     <dimen name="banner_indicator_dot_size">4dp</dimen>
     <dimen name="banner_indicator_dot_padding">@dimen/grid_0_5</dimen>
 </resources>

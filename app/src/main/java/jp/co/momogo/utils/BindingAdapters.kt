@@ -1,11 +1,13 @@
 package jp.co.momogo.utils
 
 import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -206,5 +208,12 @@ fun RecyclerView.bindReviewItems(uiState: RestaurantDetailUiState) {
     val adapter = this.adapter
     if (adapter is ReviewAdapter && uiState is RestaurantDetailUiState.RestaurantDetail) {
         adapter.submitList(uiState.data.review)
+    }
+}
+
+@BindingAdapter("reviewVisible")
+fun View.bindReviewVisible(uiState: RestaurantDetailUiState) {
+    if (uiState is RestaurantDetailUiState.RestaurantDetail) {
+        this.isVisible = uiState.data.review.isEmpty()
     }
 }
